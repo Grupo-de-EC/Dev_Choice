@@ -42,6 +42,7 @@ main#chat-container {
   border: 1px solid black;
 }
 
+/* CSS do botão enviar */
 button {
   padding: 10px 20px;
   border: none;
@@ -51,6 +52,7 @@ button {
   cursor: pointer;
 }
 
+/* CSS do botão contraste */
 #contrasteBtn {
   background-color: #004990;
   color: white;
@@ -86,7 +88,6 @@ body.alto-contraste {
   background-color: black;
   color: green;
 }
-
 body.alto-contraste a,
 body.alto-contraste h1,
 body.alto-contraste h2,
@@ -103,7 +104,6 @@ body.alto-contraste button {
   background-color: black !important;
   color: limegreen !important;
 }
-
 .alto-contraste body,
 .alto-contraste .navbar,
 .alto-contraste .nav,
@@ -120,24 +120,22 @@ body.alto-contraste button {
   color: limegreen !important;
   border-color: limegreen !important;
 }
-
 .alto-contraste a,
 .alto-contraste a.nav-link,
 .alto-contraste .navbar-brand {
   color: limegreen !important;
 }
-
 .alto-contraste .btn {
   background-color: black !important;
   color: limegreen !important;
   border: 1px solid limegreen !important;
 }
-
 .alto-contraste .btn:hover {
   background-color: limegreen !important;
   color: black !important;
 }
 
+/* CSS do rodapé */
 footer {
   text-align: center;
 }
