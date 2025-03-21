@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-  <link rel="stylesheet" href="Index.css" />
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main Page</title>
+    <title>Mini Chat</title>
+    <link rel="stylesheet" href="Index.css" />
   </head>
   <body>
-    <h1>Começo</h1>
+    <nav>
+      <h1>Mini Chat</h1>
+    </nav>
+
+    <main id="chat-container">
+      <div id="messages"></div>
+
+      <div id="input-area">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Digite sua mensagem..."
+        />
+        <button onclick="sendMessage()">Enviar</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 - João Vitor, Lucas Salomão, Matheus Becchi, Stella S</p>
+    </footer>
+
     <script src="Index.js"></script>
   </body>
 </html>
