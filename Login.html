@@ -3,7 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Kahoot-like Login</title>
+    <link rel="stylesheet" href="Login.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="login-container">
+      <h2>Login to Kahoot!</h2>
+      <form>
+        <div class="input-group">
+          <label for="username">Enter your name:</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="input-group">
+          <div class="g-recaptcha" data-sitekey="your-site-key-here"></div>
+        </div>
+        <div class="input-group">
+          <a href="Index.html">
+            <button type="button">Login</button>
+          </a>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>
