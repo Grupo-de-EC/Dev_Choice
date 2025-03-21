@@ -14,3 +14,6 @@ function sendMessage() {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 }
+document.getElementById("contrasteBtn").addEventListener("click", function () {
+  document.body.classList.toggle("alto-contraste");
+});

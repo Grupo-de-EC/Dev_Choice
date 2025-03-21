@@ -51,30 +51,93 @@ button {
   cursor: pointer;
 }
 
-/* Tema claro (padrão) */
-body.light-theme {
-  background-color: white;
+#contrasteBtn {
+  background-color: #004990;
+  color: white;
+  border: none;
+  padding: 0.6em 0em;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+#contrasteBtn::before {
+  content: "🌓";
+  font-size: 1.2em;
+}
+
+#contrasteBtn:hover {
+  background-color: #00376f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#contrasteBtn:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+body.alto-contraste {
+  background-color: black;
   color: green;
 }
 
-body.light-theme .navbar {
-  background-color: #f8f9fa !important;
+body.alto-contraste a,
+body.alto-contraste h1,
+body.alto-contraste h2,
+body.alto-contraste h3,
+body.alto-contraste p,
+body.alto-contraste span,
+body.alto-contraste button {
+  color: green;
+  background-color: black;
+  border-color: green;
 }
 
-body.light-theme .nav-link {
-  color: green !important;
+.alto-contraste {
+  background-color: black !important;
+  color: limegreen !important;
 }
 
-/* Tema escuro */
-body.dark-theme {
-  background-color: #121212;
-  color: #00ff00;
+.alto-contraste body,
+.alto-contraste .navbar,
+.alto-contraste .nav,
+.alto-contraste .nav-item,
+.alto-contraste .dropdown-menu,
+.alto-contraste .form-control,
+.alto-contraste .form-group,
+.alto-contraste .btn,
+.alto-contraste input,
+.alto-contraste textarea,
+.alto-contraste .message,
+.alto-contraste .footer {
+  background-color: black !important;
+  color: limegreen !important;
+  border-color: limegreen !important;
 }
 
-body.dark-theme .navbar {
-  background-color: #000000 !important;
+.alto-contraste a,
+.alto-contraste a.nav-link,
+.alto-contraste .navbar-brand {
+  color: limegreen !important;
 }
 
-body.dark-theme .nav-link {
-  color: #00ff00 !important;
+.alto-contraste .btn {
+  background-color: black !important;
+  color: limegreen !important;
+  border: 1px solid limegreen !important;
+}
+
+.alto-contraste .btn:hover {
+  background-color: limegreen !important;
+  color: black !important;
+}
+
+footer {
+  text-align: center;
 }
