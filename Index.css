@@ -44,13 +44,30 @@ main#chat-container {
 
 /* CSS do botão enviar */
 button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: none;
   background-color: #4caf50;
   color: white;
-  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  background-color: #388e3c;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 
 /* CSS do botão contraste */
 #contrasteBtn {
@@ -134,6 +151,89 @@ body.alto-contraste button {
   background-color: limegreen !important;
   color: black !important;
 }
+
+/* Estilo da Navbar */
+.navbar {
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar:hover {
+  background-color: #e9ecef;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: limegreen;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: limegreen;
+}
+
+.navbar-nav .dropdown-menu {
+  border-radius: 5px;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-outline-limegreen {
+  font-size: 1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border-color: limegreen;
+  color: limegreen;
+}
+
+.btn-outline-limegreen:hover {
+  background-color: limegreen;
+  border-color: limegreen;
+  color: white;
+}
+
+.accessibility-controls button {
+  font-size: 0.9rem;
+  padding: 8px 15px;
+  margin-top: 10px;
+}
+
+.accessibility-controls button:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.navbar-toggler {
+  border: 2px solid limegreen;
+}
+
+.navbar-toggler-icon {
+  background-color: limegreen;
+}
+
+.nav-item .dropdown-menu {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #e9ecef;
+}
+
 
 /* CSS do rodapé */
 footer {

@@ -14,77 +14,75 @@
     <link rel="stylesheet" href="Index.css" />
   </head>
   <body>
-    <!-- Navbar Bootstrap -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Dev's Choice</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<!-- Navbar Bootstrap -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top shadow-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-limegreen font-weight-bold" href="#">Dev's Choice</a>
+    <button
+      class="navbar-toggler border-0 p-2"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="Login.html"
-                >Home</a
-              >
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-dark" aria-current="page" href="Login.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-dark"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Opções
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Ação 1</a></li>
+            <li><a class="dropdown-item" href="#">Ação 2</a></li>
+            <li>
+              <hr class="dropdown-divider" />
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Opções
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Ação 1</a></li>
-                <li><a class="dropdown-item" href="#">Ação 2</a></li>
-
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="#">Outra coisa</a></li>
-              </ul>
-            </li>
+            <li><a class="dropdown-item" href="#">Outra coisa</a></li>
           </ul>
+        </li>
+      </ul>
 
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder=""
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Buscar
-            </button>
-          </form>
-        </div>
-      </div>
-      <div class="accessibility-controls">
-        <button id="contrasteBtn">Ativar Contraste Alto</button>
-      </div>
-      <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
-        </div>
-      </div>
-    </nav>
+      <form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Pesquisar..."
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-limegreen" type="submit">
+          Buscar
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="accessibility-controls">
+    <button id="contrasteBtn" class="btn btn-outline-danger btn-sm">Ativar Contraste Alto</button>
+  </div>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+</nav>
+
     <!-- Navbar Bootstrap Fim -->
     <main id="chat-container">
       <div id="messages"></div>
