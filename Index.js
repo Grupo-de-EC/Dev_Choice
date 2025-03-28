@@ -1,4 +1,3 @@
-// Function to send message
 function sendMessage() {
   const input = document.getElementById("user-input");
   const text = input.value.trim();
@@ -13,13 +12,11 @@ function sendMessage() {
   }
 }
 
-// Contrast Toggle
 document.getElementById("contrasteBtn").addEventListener("click", () => {
   document.body.classList.toggle("alto-contraste");
-});
-
-// Optional: Prevent form submission on search (if needed)
-document.getElementById("search-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  // Add search functionality here if desired
+  // Adiciona ou remove as classes de alto contraste nos elementos específicos
+  document.querySelector(".navbar").classList.toggle("alto-contraste");
+  document.querySelector(".btn-contrast").classList.toggle("alto-contraste");
+  document.querySelector("footer").classList.toggle("alto-contraste");
+  document.querySelector("#input-area").classList.toggle("alto-contraste");
 });

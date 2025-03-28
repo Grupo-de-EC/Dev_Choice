@@ -15,7 +15,6 @@ body {
 
 /* Navigation Bar */
 .navbar {
-  background-color: #f8f9fa;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
 }
@@ -90,41 +89,10 @@ body {
   background-color: #f1f1f1;
 }
 
-/* Show dropdown on hover */
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
-/* Search Form */
-.nav-search form {
-  display: flex;
-  align-items: center;
-}
-
-.nav-search input[type="search"] {
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  outline: none;
-}
-
-.nav-search button {
-  padding: 6px 10px;
-  border: 1px solid limegreen;
-  background-color: transparent;
-  color: limegreen;
-  border-left: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.nav-search button:hover {
-  background-color: limegreen;
-  color: white;
-}
-
-/* Contrast Button */
 .btn-contrast {
   background-color: #444;
   color: white;
@@ -139,7 +107,6 @@ body {
   background-color: #222;
 }
 
-/* Chat Container */
 #chat-container {
   flex: 1;
   padding: 20px;
@@ -147,7 +114,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensures the input area is at the bottom */
+  justify-content: space-between;
   padding: 20px;
   background-color: inherit;
 }
@@ -174,7 +141,6 @@ body {
   bottom: 50px; /* empurra o input para cima do footer */
   left: 0;
   width: 100%;
-  background-color: white;
   padding: 10px;
   z-index: 2;
 }
@@ -204,7 +170,6 @@ body {
 footer {
   text-align: center;
   padding: 15px;
-  background-color: #f8f9fa;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -216,4 +181,35 @@ footer {
 body.alto-contraste {
   background-color: black;
   color: limegreen;
+}
+/* Todos os codigos a seguir servem para mudar a cor da pagina*/
+.navbar.alto-contraste {
+  background-color: #333;
+}
+
+.nav-links a.alto-contraste {
+  color: limegreen;
+}
+
+.navbar.alto-contraste .dropdown-menu {
+  background-color: #333;
+  color: limegreen;
+}
+
+.navbar.alto-contraste .nav-brand {
+  color: limegreen;
+}
+
+.btn-contrast.alto-contraste {
+  background-color: #222;
+  color: limegreen;
+}
+
+footer.alto-contraste {
+  background-color: #333;
+  color: limegreen;
+}
+
+#input-area.alto-contraste {
+  background-color: #333;
 }
