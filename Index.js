@@ -1,20 +1,25 @@
-// Função que pega o que o usuário digitou e mostra na tela após o clique no botão
+// Function to send message
 function sendMessage() {
   const input = document.getElementById("user-input");
-  const text = input.value.trim(); // Remove espaços extras
-
+  const text = input.value.trim();
   if (text !== "") {
-    // Pega a área onde as mensagens são mostradas
     const messagesDiv = document.getElementById("messages");
     const msg = document.createElement("div");
-    msg.className = "message"; // Define a classe para o CSS
-    msg.textContent = text; // Coloca o texto na div
+    msg.className = "message";
+    msg.textContent = text;
     messagesDiv.appendChild(msg);
     input.value = "";
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 }
-document.getElementById("contrasteBtn").addEventListener("click", function () {
-  // Altera a classe do body para ativar ou desativar o contraste
+
+// Contrast Toggle
+document.getElementById("contrasteBtn").addEventListener("click", () => {
   document.body.classList.toggle("alto-contraste");
+});
+
+// Optional: Prevent form submission on search (if needed)
+document.getElementById("search-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  // Add search functionality here if desired
 });

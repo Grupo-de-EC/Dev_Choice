@@ -1,241 +1,219 @@
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-main#chat-container {
+/* Base Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand */
+.nav-brand {
+  font-size: 1.8rem;
+  color: limegreen;
+  text-decoration: none;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 10px;
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  padding: 6px 8px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: limegreen;
+}
+
+/* Dropdown */
+.dropdown-toggle::after {
+  content: " ▼";
+  font-size: 0.8rem;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 5px 0;
+  border-radius: 4px;
+  z-index: 100;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Search Form */
+.nav-search form {
+  display: flex;
+  align-items: center;
+}
+
+.nav-search input[type="search"] {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.nav-search button {
+  padding: 6px 10px;
+  border: 1px solid limegreen;
+  background-color: transparent;
+  color: limegreen;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-search button:hover {
+  background-color: limegreen;
+  color: white;
+}
+
+/* Contrast Button */
+.btn-contrast {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-contrast:hover {
+  background-color: #222;
+}
+
+/* Chat Container */
+#chat-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  margin-top: 70px;
-  margin-bottom: 50px;
-  padding: 1rem;
-  overflow-y: auto;
+  justify-content: space-between; /* Ensures the input area is at the bottom */
+  padding: 20px;
+  background-color: inherit;
 }
 
 #messages {
-  flex: 1;
-  margin-bottom: 10px;
+  flex: 1; /* This allows the messages area to grow and take the remaining space */
+  margin-bottom: 20px;
   overflow-y: auto;
 }
 
 .message {
   background-color: #f1f1f1;
   margin-bottom: 10px;
-  padding: 8px 12px;
+  padding: 10px 15px;
   border-radius: 10px;
   max-width: 70%;
 }
 
+/* Input Area */
 #input-area {
   display: flex;
   gap: 10px;
+  position: fixed;
+  bottom: 50px; /* empurra o input para cima do footer */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  z-index: 2;
 }
 
 #user-input {
   flex: 1;
   padding: 10px;
-  border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-/* CSS do botão enviar */
-button {
-  padding: 12px 24px;
-  border: none;
+.btn-chat {
   background-color: #4caf50;
   color: white;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-  background-color: #45a049;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-button:active {
-  background-color: #388e3c;
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-
-/* CSS do botão contraste */
-#contrasteBtn {
-  background-color: #004990;
-  color: white;
   border: none;
-  padding: 0.6em 0em;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1em;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  transition: background-color 0.3s;
 }
 
-#contrasteBtn::before {
-  content: "🌓";
-  font-size: 1.2em;
+.btn-chat:hover {
+  background-color: #45a049;
 }
 
-#contrasteBtn:hover {
-  background-color: #00376f;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-#contrasteBtn:active {
-  transform: scale(0.98);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-}
-body.alto-contraste {
-  background-color: black;
-  color: green;
-}
-body.alto-contraste a,
-body.alto-contraste h1,
-body.alto-contraste h2,
-body.alto-contraste h3,
-body.alto-contraste p,
-body.alto-contraste span,
-body.alto-contraste button {
-  color: green;
-  background-color: black;
-  border-color: green;
-}
-
-.alto-contraste {
-  background-color: black !important;
-  color: limegreen !important;
-}
-.alto-contraste body,
-.alto-contraste .navbar,
-.alto-contraste .nav,
-.alto-contraste .nav-item,
-.alto-contraste .dropdown-menu,
-.alto-contraste .form-control,
-.alto-contraste .form-group,
-.alto-contraste .btn,
-.alto-contraste input,
-.alto-contraste textarea,
-.alto-contraste .message,
-.alto-contraste .footer {
-  background-color: black !important;
-  color: limegreen !important;
-  border-color: limegreen !important;
-}
-.alto-contraste a,
-.alto-contraste a.nav-link,
-.alto-contraste .navbar-brand {
-  color: limegreen !important;
-}
-.alto-contraste .btn {
-  background-color: black !important;
-  color: limegreen !important;
-  border: 1px solid limegreen !important;
-}
-.alto-contraste .btn:hover {
-  background-color: limegreen !important;
-  color: black !important;
-}
-
-/* Estilo da Navbar */
-.navbar {
-  background-color: #f8f9fa;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.navbar:hover {
-  background-color: #e9ecef;
-}
-
-.navbar-brand {
-  font-size: 1.8rem;
-  transition: color 0.3s ease;
-}
-
-.navbar-brand:hover {
-  color: limegreen;
-}
-
-.nav-link {
-  font-size: 1.1rem;
-  padding: 10px 15px;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: limegreen;
-}
-
-.navbar-nav .dropdown-menu {
-  border-radius: 5px;
-}
-
-.dropdown-item:hover {
-  background-color: #f1f1f1;
-}
-
-.btn-outline-limegreen {
-  font-size: 1rem;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  border-color: limegreen;
-  color: limegreen;
-}
-
-.btn-outline-limegreen:hover {
-  background-color: limegreen;
-  border-color: limegreen;
-  color: white;
-}
-
-.accessibility-controls button {
-  font-size: 0.9rem;
-  padding: 8px 15px;
-  margin-top: 10px;
-}
-
-.accessibility-controls button:hover {
-  background-color: #dc3545;
-  color: white;
-}
-
-.navbar-toggler {
-  border: 2px solid limegreen;
-}
-
-.navbar-toggler-icon {
-  background-color: limegreen;
-}
-
-.nav-item .dropdown-menu {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-item {
-  transition: background-color 0.3s ease;
-}
-
-.dropdown-item:hover {
-  background-color: #e9ecef;
-}
-
-
-/* CSS do rodapé */
+/* Footer */
 footer {
   text-align: center;
+  padding: 15px;
+  background-color: #f8f9fa;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Alto Contraste Mode */
+body.alto-contraste {
+  background-color: black;
+  color: limegreen;
 }
