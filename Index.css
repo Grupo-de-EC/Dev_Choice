@@ -49,13 +49,13 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: limegreen;
   padding: 6px 8px;
   transition: color 0.3s;
 }
 
 .nav-links a:hover {
-  color: limegreen;
+  color: darkgreen;
 }
 
 /* Dropdown */
