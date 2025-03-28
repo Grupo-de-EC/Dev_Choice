@@ -177,22 +177,17 @@ footer {
   z-index: 1;
 }
 
-/* Alto Contraste Mode */
 body.alto-contraste {
   background-color: black;
   color: limegreen;
 }
 /* Todos os codigos a seguir servem para mudar a cor da pagina*/
-.navbar.alto-contraste {
-  background-color: #333;
-}
 
 .nav-links a.alto-contraste {
   color: limegreen;
 }
 
 .navbar.alto-contraste .dropdown-menu {
-  background-color: #333;
   color: limegreen;
 }
 
@@ -201,15 +196,9 @@ body.alto-contraste {
 }
 
 .btn-contrast.alto-contraste {
-  background-color: #222;
   color: limegreen;
 }
 
 footer.alto-contraste {
-  background-color: #333;
   color: limegreen;
-}
-
-#input-area.alto-contraste {
-  background-color: #333;
 }

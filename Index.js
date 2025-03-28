@@ -13,8 +13,8 @@ function sendMessage() {
 }
 
 document.getElementById("contrasteBtn").addEventListener("click", () => {
+  // Ativa/desativa a classe de alto contraste no body e nos elementos específicos
   document.body.classList.toggle("alto-contraste");
-  // Adiciona ou remove as classes de alto contraste nos elementos específicos
   document.querySelector(".navbar").classList.toggle("alto-contraste");
   document.querySelector(".btn-contrast").classList.toggle("alto-contraste");
   document.querySelector("footer").classList.toggle("alto-contraste");
