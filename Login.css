@@ -100,8 +100,3 @@ button:hover {
   background: #005b96;
   transform: scale(1.05);
 }
-
-/* Centralizar o reCAPTCHA */
-.g-recaptcha {
-  margin-top: 15px;
-}
