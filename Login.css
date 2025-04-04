@@ -53,8 +53,3 @@ button {
 button:hover {
   background-color: #005b96;
 }
-
-/* Center the reCAPTCHA */
-.g-recaptcha {
-  margin-top: 10px;
-}
