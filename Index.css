@@ -1,4 +1,3 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -8,22 +7,21 @@
 /* Base Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: white;
+  background-color: #f8f9fa;
   color: black;
   transition: background-color 0.3s, color 0.3s;
 }
 
 /* Navigation Bar */
 .navbar {
-  box-shadow: 0 2px 4px limegreen;
-  width: 100%;
-  background-color: rgba(169, 169, 169, 0.479);
+  background-color: #007bff;
+  padding: 15px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,8 +30,9 @@ body {
 /* Brand */
 .nav-brand {
   font-size: 1.8rem;
-  color: limegreen;
+  color: white;
   text-decoration: none;
+  font-weight: bold;
 }
 
 /* Navigation Links */
@@ -44,19 +43,20 @@ body {
 }
 
 .nav-links li {
-  margin: 0 10px;
+  margin: 0 15px;
   position: relative;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: limegreen;
+  color: white;
+  font-size: 1rem;
   padding: 6px 8px;
   transition: color 0.3s;
 }
 
 .nav-links a:hover {
-  color: darkgreen;
+  color: #ffdd57;
 }
 
 /* Dropdown */
@@ -70,7 +70,7 @@ body {
   position: absolute;
   top: 30px;
   left: 0;
-  background-color: #fff;
+  background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   list-style: none;
   padding: 5px 0;
@@ -95,43 +95,49 @@ body {
 }
 
 .btn-contrast {
-  background-color: #444;
-  color: white;
+  background-color: #ffc107;
+  color: black;
   border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 12px 18px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .btn-contrast:hover {
-  background-color: #222;
+  background-color: #e0a800;
+  transform: scale(1.1);
 }
 
 #chat-container {
   flex: 1;
   padding: 20px;
-  overflow-y: auto;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
-  background-color: inherit;
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding-bottom: 60px;
 }
 
 #messages {
   flex: 1;
-  margin-bottom: 20px;
   overflow-y: auto;
+  padding: 10px;
+  height: 400px;
 }
 
 .message {
-  background-color: #f1f1f1;
+  background-color: #e9ecef;
   margin-bottom: 10px;
   padding: 10px 15px;
   border-radius: 10px;
   max-width: 70%;
+  word-wrap: break-word;
 }
 
 /* Input Area */
@@ -139,32 +145,35 @@ body {
   display: flex;
   gap: 10px;
   position: fixed;
-  bottom: 50px; /* empurra o input para cima do footer */
+  bottom: 50px;
   left: 0;
   width: 100%;
-  padding: 10px;
+  padding: 15px;
+  background: white;
   z-index: 2;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #user-input {
   flex: 1;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 .btn-chat {
-  background-color: #4caf50;
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 12px 20px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .btn-chat:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
 /* Footer */
@@ -175,20 +184,26 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 1;
+  background: white;
+  font-size: 0.9rem;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 body.alto-contraste {
   background-color: black;
   color: limegreen;
 }
-/* Todos os codigos a seguir servem para mudar a cor da pagina*/
 
 .nav-links a.alto-contraste {
   color: limegreen;
 }
 
+.navbar.alto-contraste {
+  background-color: black;
+}
+
 .navbar.alto-contraste .dropdown-menu {
+  background-color: #333;
   color: limegreen;
 }
 
@@ -197,15 +212,11 @@ body.alto-contraste {
 }
 
 .btn-contrast.alto-contraste {
-  color: limegreen;
+  background-color: limegreen;
+  color: black;
 }
 
 footer.alto-contraste {
   color: limegreen;
-}
-
-h3 {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  background-color: black;
 }
