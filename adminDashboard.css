@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .dashboard-container {
+    background-color: white;
+    padding: 40px;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-actions a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #009578;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dashboard-actions a.logout-btn {
+    background-color: #c0392b;
+  }
+  
+  .dashboard-actions a:hover {
+    background-color: #007a63;
+  }
+  
+  .dashboard-actions a.logout-btn:hover {
+    background-color: #a93226;
+  }
+  
