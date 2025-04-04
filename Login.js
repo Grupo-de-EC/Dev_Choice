@@ -3,10 +3,12 @@ document.getElementById("loginButton").addEventListener("click", function () {
   localStorage.setItem("nomeUsuario", username);
 });
 
-document.querySelector("button[type='button']").addEventListener("click", function () {
-  const nomeUsuario = document.getElementById("username").value.trim();
-  if (nomeUsuario) {
+document
+  .querySelector("button[type='button']")
+  .addEventListener("click", function () {
+    const nomeUsuario = document.getElementById("username").value.trim();
+    if (nomeUsuario) {
       localStorage.setItem("nomeUsuario", nomeUsuario);
       window.location.href = "Index.html";
-  }
-});
+    }
+  });
