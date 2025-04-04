@@ -1,11 +1,10 @@
 <?php
-ob_start(); // Prevents header() issues
+ob_start();
 include('Conexao.php');
 
 // Debugging: Check if PHP runs
 echo "Script is running...<br>";
 
-// Check if form was submitted via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "POST request received.<br>";
 
@@ -18,11 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
 
     if (!empty($username)) {
-        echo "Received username: $username <br>";  // Debug message
+        echo "Received username: $username <br>";
 
         $conn = conecta_servidor();
 
-        // Prepare SQL statement
         $stmt = $conn->prepare("INSERT INTO usuarios (nome) VALUES (?)");
 
         if ($stmt === false) {
@@ -34,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->execute()) {
             echo "Usuário salvo com sucesso! <br>";
 
-            // ✅ JavaScript redirect instead of header()
             echo "<script>window.location.href='index.html';</script>";
             exit();
         } else {
