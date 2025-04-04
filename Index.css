@@ -120,7 +120,7 @@ body {
 }
 
 #messages {
-  flex: 1; /* This allows the messages area to grow and take the remaining space */
+  flex: 1;
   margin-bottom: 20px;
   overflow-y: auto;
 }
