@@ -1,6 +1,6 @@
 <?php
 function conecta_servidor() {
-    $db_name = "dev_choices";
+    $db_name = "devs_choice";
     $user = "root";
     $pass = "";
     $server = "localhost";
