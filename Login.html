@@ -17,7 +17,7 @@
     <!-- Login do Usuário -->
     <div class="login-container">
       <h2>Entrar</h2>
-      <form>
+      <form id="loginForm">
         <div class="input-group">
           <label for="username">Entre seu Nome:</label>
           <input type="text" id="username" name="username" required />
@@ -26,11 +26,10 @@
           <div class="g-recaptcha" data-sitekey="your-site-key-here"></div>
         </div>
         <div class="input-group">
-          <a href="Index.html">
-            <button type="button">Login</button>
-          </a>
+          <button type="submit">Login</button>
         </div>
       </form>
     </div>
+    <script src="Login.js"></script>
   </body>
 </html>

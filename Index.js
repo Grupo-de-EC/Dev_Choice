@@ -22,6 +22,7 @@ document.getElementById("contrasteBtn").addEventListener("click", () => {
 });
 
 const nome = localStorage.getItem("nomeUsuario");
+console.log("Nome recuperado do localStorage:", nome);
 if (nome) {
   document.getElementById("boasVindas").textContent = `Bem-vindo, ${nome}!`;
 }
