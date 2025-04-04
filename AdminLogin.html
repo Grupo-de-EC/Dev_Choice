@@ -9,19 +9,19 @@
   <body>
     <div class="login-container">
       <h2>Login Administrador</h2>
-      <form id="login-form">
+      <form action="adminLogin.php" method="POST">
         <div class="input-group">
-          <label for="admin-user">Usuário:</label>
-          <input type="text" id="admin-user" name="admin-user" required />
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" required />
         </div>
         <div class="input-group">
-          <label for="admin-pass">Senha:</label>
-          <input type="password" id="admin-pass" name="admin-pass" required />
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password" required />
         </div>
         <div class="input-group">
           <button type="submit">Entrar</button>
         </div>
-      </form>
+      </form>      
     </div>
   </body>
 </html>
