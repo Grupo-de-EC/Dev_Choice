@@ -220,3 +220,32 @@ footer.alto-contraste {
   color: limegreen;
   background-color: black;
 }
+
+/* Estilização padrão do Boas-Vindas */
+#boasVindas {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  color: #007bff;
+  text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Nome do usuário destacado */
+#boasVindas span {
+  color: #ffdd57;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* Modo Alto Contraste */
+body.alto-contraste #boasVindas {
+  color: limegreen;
+  text-shadow: 2px 2px 5px rgba(0, 255, 0, 0.5);
+}
+
+body.alto-contraste #boasVindas span {
+  color: limegreen;
+  font-weight: bold;
+}
+
