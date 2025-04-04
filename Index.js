@@ -20,3 +20,8 @@ document.getElementById("contrasteBtn").addEventListener("click", () => {
   document.querySelector("footer").classList.toggle("alto-contraste");
   document.querySelector("#input-area").classList.toggle("alto-contraste");
 });
+
+const nome = localStorage.getItem("nomeUsuario");
+if (nome) {
+  document.getElementById("boasVindas").textContent = `Bem-vindo, ${nome}!`;
+}

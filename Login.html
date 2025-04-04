@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="Login.css">
-</head>
-<body>
-
-    <!-- Botão de Login do Administrador -->
-    <div class="admin-button">
-        <a href="AdminLogin.html">
-            <button>Login para Administrador</button>
-        </a>
-    </div>
-
+    <link rel="stylesheet" href="Login.css" />
+  </head>
+  <body>
     <!-- Login do Usuário -->
     <div class="login-container">
-        <h2>Entrar</h2>
-        <form>
-            <div class="input-group">
-                <label for="username">Entre seu Nome:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="input-group">
-                <div class="g-recaptcha" data-sitekey="your-site-key-here"></div>
-            </div>
-            <div class="input-group">
-                <a href="Index.html">
-                    <button type="button">Login</button>
-                </a>
-            </div>
-        </form>
+      <h2>Entrar</h2>
+      <form>
+        <div class="input-group">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Entre seu Nome"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <a href="Index.html">
+            <button type="button" id="loginButton">Login</button>
+          </a>
+        </div>
+      </form>
     </div>
-
-</body>
+    <script src="Login.js"></script>
+  </body>
 </html>

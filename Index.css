@@ -203,3 +203,9 @@ body.alto-contraste {
 footer.alto-contraste {
   color: limegreen;
 }
+
+h3 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

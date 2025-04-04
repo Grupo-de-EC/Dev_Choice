@@ -3,99 +3,71 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Arial", sans-serif;
 }
 
-/* Estilização do corpo */
 body {
-  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #2c3e50, #4ca1af);
-  position: relative;
 }
 
-/* Botão de Login para Administrador */
-.admin-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.admin-button button {
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  transition: 0.3s;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-}
-
-.admin-button button:hover {
-  background-color: #c9302c;
-  transform: scale(1.05);
-}
-
-/* Container do login */
 .login-container {
   background: rgba(255, 255, 255, 0.9);
-  padding: 25px;
+  padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 320px;
   text-align: center;
-  backdrop-filter: blur(10px);
+  max-width: 350px;
+  width: 100%;
 }
 
-/* Título */
-h2 {
-  font-size: 26px;
+.login-container h2 {
   margin-bottom: 20px;
-  color: #333;
+  color: #1e3c72;
 }
 
-/* Grupo de entrada */
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-align: left;
 }
 
-/* Campos de entrada */
-input[type="text"] {
+.input-group label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-group input {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
+  padding: 10px;
+  margin-top: 5px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 5px;
   transition: 0.3s;
 }
 
-input[type="text"]:focus {
-  border-color: #0a74da;
+.input-group input:focus {
+  border-color: #1e3c72;
   outline: none;
-  box-shadow: 0 0 6px rgba(10, 116, 218, 0.5);
+  box-shadow: 0 0 5px rgba(30, 60, 114, 0.5);
 }
 
-/* Botão de enviar */
-button {
+.input-group a button {
   width: 100%;
-  padding: 12px;
-  background: #0a74da;
+  padding: 10px;
+  background: #1e3c72;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-  background-color: #005b96;
+.input-group a button:hover {
+  background: #2a5298;
 }
