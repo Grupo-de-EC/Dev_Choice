@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="Login.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+
     <!-- Botão de Login do Administrador -->
     <div class="admin-button">
-      <a href="AdminLogin.html">
-        <button>Login para Administrador</button>
-      </a>
+        <a href="adminLogin.html">
+            <button>Login para Administrador</button>
+        </a>
     </div>
 
     <!-- Login do Usuário -->
     <div class="login-container">
-      <h2>Entrar</h2>
-      <form id="loginForm">
-        <div class="input-group">
-          <label for="username">Entre seu Nome:</label>
-          <input type="text" id="username" name="username" required />
-        </div>
-        <div class="input-group">
-          <div class="g-recaptcha" data-sitekey="your-site-key-here"></div>
-        </div>
-        <div class="input-group">
-          <button type="submit">Login</button>
-        </div>
-      </form>
+        <h2>Entrar</h2>
+        <form method="POST" action="register.php">
+            <input type="text" name="name" placeholder="Seu Nome:" required>
+            <button type="submit">Entrar</button>
+          </form>
+            <div class="input-group">
+                <div class="g-recaptcha" data-sitekey="your-site-key-here"></div>
+            </div>
+            <div class="input-group">
+                <a href="Index.html">
+                </a>
+            </div>
+        </form>
     </div>
     <script src="Login.js"></script>
-  </body>
+</body>
 </html>
