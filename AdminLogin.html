@@ -9,7 +9,7 @@
   <body>
     <div class="login-container">
       <h2>Login Administrador</h2>
-      <form>
+      <form id="login-form">
         <div class="input-group">
           <label for="admin-user">Usuário:</label>
           <input type="text" id="admin-user" name="admin-user" required />
@@ -23,5 +23,12 @@
         </div>
       </form>
     </div>
+
+    <script>
+      document.getElementById("login-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita o recarregamento da página
+        window.location.href = "index.html"; // Redireciona para a página index.html
+      });
+    </script>
   </body>
 </html>
