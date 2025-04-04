@@ -12,7 +12,7 @@
       <div class="nav-container">
         <a href="#" class="nav-brand">Dev's Choice</a>
         <ul class="nav-links">
-          <li><a href="Login.html">Home</a></li>
+          <li><a href="Login.html" id="loginButton">Login</a></li>
           <li><a href="#">Link</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">Opções</a>
@@ -34,17 +34,24 @@
     </nav>
 
     <!-- Main Chat Area -->
-    <main id="chat-container">
-      <div id="messages"></div>
-      <div id="input-area">
-        <input
-          type="text"
-          id="user-input"
-          placeholder="Digite sua mensagem..."
-        />
-        <button onclick="sendMessage()" class="btn-chat">Enviar</button>
-      </div>
-    </main>
+    <div id="chat-wrapper">
+      <main id="chat-container">
+        <div id="messages"></div>
+        <div id="input-area">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Digite sua mensagem..."
+          />
+          <button onclick="sendMessage()" class="btn-chat">Enviar</button>
+        </div>
+      </main>
+
+      <!-- Respostas da IA -->
+      <aside id="response-container">
+        <div id="ai-response"></div>
+      </aside>
+    </div>
 
     <!-- Footer -->
     <footer>
