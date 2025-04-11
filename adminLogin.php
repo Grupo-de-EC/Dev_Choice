@@ -26,7 +26,7 @@ if ($admin && $admin['password'] === $password) {
     $_SESSION['name'] = $admin['name'];
 
     // Redirect to admin area
-    header("Location: adminDashboard.html"); // Change this to your actual admin page
+    header("Location: admin.html"); // Change this to your actual admin page
     exit();
 } else {
     // Login failed
