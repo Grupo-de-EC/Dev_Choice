@@ -6,9 +6,7 @@ $db_name = "devs_choice";
     $pass = "";
     $server = "localhost";
 
-    echo "Testando conexão..."; // Adicione isso antes da linha da conexão
-
-    $conn = mysqli_connect($server, $user, $pass, $db_name);
+    $conn = mysqli_connect($server, $user, $pass, $db_name, 3307);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

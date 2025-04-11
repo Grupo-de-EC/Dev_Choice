@@ -18,10 +18,11 @@
     <!-- Login do Usuário -->
     <div class="login-container">
         <h2>Entrar</h2>
-        <form method="POST" action="register.php">
-            <input type="text" name="name" placeholder="Seu Nome:" required>
+        <form id="loginForm" method="POST" action="register.php">
+            <input type="text" name="name" placeholder="Seu Nome:" required id="username">
             <button type="submit">Entrar</button>
-          </form>
+        </form>
+          
             <div class="input-group">
                 <div class="g-recaptcha" data-sitekey="your-site-key-here"></div>
             </div>

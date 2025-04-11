@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli("localhost", "root", "", "devs_choice");
+$conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
 
 echo "adminLogin.php is working!";
 
