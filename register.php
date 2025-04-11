@@ -1,12 +1,14 @@
 <?php
 session_start();
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "devs_choice"; 
+$db_name = "devs_choice";
+    $user = "root";
+    $pass = "";
+    $server = "localhost";
 
-$conn = new mysqli($host, $user, $password, $database);
+    echo "Testando conexão..."; // Adicione isso antes da linha da conexão
+
+    $conn = mysqli_connect($server, $user, $pass, $db_name);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
