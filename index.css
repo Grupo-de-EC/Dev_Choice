@@ -51,7 +51,7 @@ body {
 }
 
 .nav-links a:hover {
-  color: #ffdd57;
+  color: #007bff;
 }
 
 .dropdown-toggle::after {
@@ -60,7 +60,8 @@ body {
 }
 
 .dropdown-menu {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: 30px;
   left: 0;
@@ -70,7 +71,9 @@ body {
   padding: 5px 0;
   border-radius: 4px;
   z-index: 100;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
 
 .dropdown-menu li a {
   display: block;
@@ -85,8 +88,10 @@ body {
 }
 
 .dropdown:hover .dropdown-menu {
-  display: block;
+  opacity: 1;
+  visibility: visible;
 }
+
 
 .btn-contrast {
   background-color: #ffc107;
@@ -207,6 +212,20 @@ body.alto-contraste {
   color: limegreen;
 }
 
+body.alto-contraste .dropdown-menu {
+  background-color: white;
+}
+
+body.alto-contraste .dropdown-menu li a {
+  color: limegreen;
+}
+
+body.alto-contraste .dropdown-menu li a:hover {
+  background-color: #222;
+  color: white;
+}
+
+
 .navbar.alto-contraste .nav-brand {
   color: limegreen;
 }
@@ -221,6 +240,20 @@ footer.alto-contraste {
   background-color: black;
 }
 
+body.alto-contraste .nav-links a:hover {
+  color: limegreen;
+}
+
+
+.dropdown-menu li a.alto-contraste {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
+  color:white;
+  text-decoration: none;
+}
+
+
 #boasVindas {
   font-size: 2rem;
   font-weight: bold;
@@ -228,12 +261,6 @@ footer.alto-contraste {
   margin-top: 20px;
   color: #007bff;
   text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.5);
-}
-
-#boasVindas span {
-  color: #ffdd57;
-  font-weight: bold;
-  text-transform: capitalize;
 }
 
 body.alto-contraste #boasVindas {

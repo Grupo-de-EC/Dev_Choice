@@ -24,15 +24,13 @@ document.getElementById("contrasteBtn").addEventListener("click", () => {
 window.addEventListener("DOMContentLoaded", function () {
   const nome = localStorage.getItem("nomeUsuario");
   const projeto = localStorage.getItem("tipoProjeto");
-
   const boasVindas = document.getElementById("boasVindas");
 
   if (nome && projeto) {
-    boasVindas.innerHTML = `Bem-vindo, ${nome},${projeto}!`;
+    boasVindas.innerHTML = `Bem-vindo, ${nome}<br>Seu projeto é: ${projeto}!`;
   } else if (nome) {
     boasVindas.textContent = `Bem-vindo, ${nome}!`;
   } else if (projeto) {
-    boasVindas.textContent = `Bem-vindo ao projeto ${projeto}!`;
+    boasVindas.innerHTML = `Bem-vindo ao projeto <span>${projeto}</span>!`;
   }
 });
-
