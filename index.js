@@ -11,9 +11,15 @@ function sendMessage() {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 }
+document.getElementById("user-input").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); //Evita comportamento padrão como quebrar linha
+    sendMessage(); //Chama a função
+  }
+});
 
 document.getElementById("contrasteBtn").addEventListener("click", () => {
-  // Ativa/desativa a classe de alto contraste no body e nos elementos específicos
+  //Ativa/desativa a classe de alto contraste no body e nos elementos específicos
   document.body.classList.toggle("alto-contraste");
   document.querySelector(".navbar").classList.toggle("alto-contraste");
   document.querySelector(".btn-contrast").classList.toggle("alto-contraste");
