@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 //Chat da IA
-const apiKey = "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"; // Substitua pela sua chave do OpenRouter
+const apiKey = "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"; // Substitua pela sua chave do OpenRouter
 
 async function sendMessage() {
   const input = document.getElementById("user-input");
@@ -85,3 +85,21 @@ function addMessage(text, classe) {
   messagesDiv.appendChild(div);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  // Boas-vindas personalizadas com nome/projeto (já existe)
+  const nome = localStorage.getItem("nomeUsuario");
+  const projeto = localStorage.getItem("tipoProjeto");
+  const boasVindas = document.getElementById("boasVindas");
+
+  if (nome && projeto) {
+    boasVindas.innerHTML = `Bem-vindo, ${nome}<br>Seu projeto é: ${projeto}!`;
+  } else if (nome) {
+    boasVindas.textContent = `Bem-vindo, ${nome}!`;
+  } else if (projeto) {
+    boasVindas.innerHTML = `Bem-vindo ao projeto <span>${projeto}</span>!`;
+  }
+
+  // Mensagem de apresentação da Quantika
+  addMessage("Olá! 👋 Eu sou a Quantika, sua assistente virtual. Estou aqui para te ajudar com dúvidas sobre programação, ferramentas e desenvolvimento. Vamos começar?", "bot");
+});
