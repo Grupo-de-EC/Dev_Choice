@@ -42,7 +42,9 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 //Chat da IA
-const apiKey = "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"; // Substitua pela sua chave do OpenRouter
+
+//Chave 2: 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
+const apiKey = "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"; // Substitua pela sua chave do OpenRouter
 
 async function sendMessage() {
   const input = document.getElementById("user-input");
