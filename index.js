@@ -40,3 +40,48 @@ window.addEventListener("DOMContentLoaded", function () {
     boasVindas.innerHTML = `Bem-vindo ao projeto <span>${projeto}</span>!`;
   }
 });
+
+//Chat da IA
+const apiKey = "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"; // Substitua pela sua chave do OpenRouter
+
+async function sendMessage() {
+  const input = document.getElementById("user-input");
+  const message = input.value.trim();
+  if (!message) return;
+
+  addMessage("Você: " + message, "user");
+  input.value = "";
+
+  try {
+    const resposta = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + apiKey,
+        "HTTP-Referer": "http://localhost/Dev_Choice/index.html", // troque para seu site real
+        "X-Title": "Dev's Choice"
+      },
+      body: JSON.stringify({
+        model: "openai/gpt-3.5-turbo",
+        messages: [{ role: "user", content: message }]
+      })
+    });
+
+    const dados = await resposta.json();
+    const respostaIA = dados.choices[0].message.content;
+    addMessage("IA: " + respostaIA, "bot");
+
+  } catch (error) {
+    addMessage("Erro ao conectar com a IA.", "bot");
+    console.error(error);
+  }
+}
+
+function addMessage(text, classe) {
+  const messagesDiv = document.getElementById("messages");
+  const div = document.createElement("div");
+  div.className = classe;
+  div.textContent = text;
+  messagesDiv.appendChild(div);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
