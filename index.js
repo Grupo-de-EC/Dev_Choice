@@ -70,7 +70,7 @@ async function sendMessage() {
 
     const dados = await resposta.json();
     const respostaIA = dados.choices[0].message.content;
-    addMessage("IA: " + respostaIA, "bot");
+    addMessage("Quantika: " + respostaIA, "bot");
 
   } catch (error) {
     addMessage("Erro ao conectar com a IA.", "bot");
