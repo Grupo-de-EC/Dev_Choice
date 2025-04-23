@@ -43,8 +43,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 //Chat da IA
 
-//Chave 2: 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
-const apiKey = "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"; // Substitua pela sua chave do OpenRouter
+const apiKey = "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"; // Substitua pela sua chave do OpenRouter
 
 async function sendMessage() {
   const input = document.getElementById("user-input");
