@@ -1,8 +1,12 @@
-document.getElementById("login-form").addEventListener("submit", function(event) {
-  event.preventDefault();
+document
+  .getElementById("login-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  const tipoProjeto = document.querySelector("input[type='text']").value.trim();
-  localStorage.setItem("nomeProjeto", nomeProjeto);
+    const tipoProjeto = document
+      .querySelector("input[type='text']")
+      .value.trim();
+    localStorage.setItem("tipoProjeto", tipoProjeto);
 
-  window.location.href = "index.html";
-});
+    window.location.href = "index.html";
+  });

@@ -11,12 +11,14 @@ function sendMessage() {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 }
-document.getElementById("user-input").addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault(); //Evita comportamento padrão como quebrar linha
-    sendMessage(); //Chama a função
-  }
-});
+document
+  .getElementById("user-input")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault(); //Evita comportamento padrão como quebrar linha
+      sendMessage(); //Chama a função
+    }
+  });
 
 document.getElementById("contrasteBtn").addEventListener("click", () => {
   //Ativa/desativa a classe de alto contraste no body e nos elementos específicos
@@ -43,7 +45,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
 //Chat da IA
 
-const apiKey = "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"; // Substitua pela sua chave do OpenRouter
+const apiKey =
+  "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"; // Substitua pela sua chave do OpenRouter
 
 async function sendMessage() {
   const input = document.getElementById("user-input");
@@ -54,24 +57,26 @@ async function sendMessage() {
   input.value = "";
 
   try {
-    const resposta = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + apiKey,
-        "HTTP-Referer": "http://localhost/Dev_Choice/index.html", // troque para seu site real
-        "X-Title": "Dev's Choice"
-      },
-      body: JSON.stringify({
-        model: "openai/gpt-3.5-turbo",
-        messages: [{ role: "user", content: message }]
-      })
-    });
+    const resposta = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + apiKey,
+          "HTTP-Referer": "http://localhost/Dev_Choice/index.html", // troque para seu site real
+          "X-Title": "Dev's Choice",
+        },
+        body: JSON.stringify({
+          model: "openai/gpt-3.5-turbo",
+          messages: [{ role: "user", content: message }],
+        }),
+      }
+    );
 
     const dados = await resposta.json();
     const respostaIA = dados.choices[0].message.content;
     addMessage("Quantika: " + respostaIA, "bot");
-
   } catch (error) {
     addMessage("Erro ao conectar com a IA.", "bot");
     console.error(error);
@@ -102,5 +107,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // Mensagem de apresentação da Quantika
-  addMessage("Olá! 👋 Eu sou a Quantika, sua assistente virtual. Estou aqui para te ajudar com dúvidas sobre programação, ferramentas e desenvolvimento. Vamos começar?", "bot");
+  addMessage(
+    "Olá! 👋 Eu sou a Quantika, sua assistente virtual. Estou aqui para te ajudar com dúvidas sobre programação, ferramentas e desenvolvimento. Vamos começar?",
+    "bot"
+  );
 });
