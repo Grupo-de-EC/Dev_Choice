@@ -21,15 +21,12 @@ $result = $stmt->get_result();
 $admin = $result->fetch_assoc();
 
 if ($admin && $admin['password'] === $password) {
-    // Login success
     $_SESSION['role'] = 'admin';
     $_SESSION['name'] = $admin['name'];
 
-    // Redirect to admin area
-    header("Location: admin.html"); // Change this to your actual admin page
+    header("Location: admin.html");
     exit();
 } else {
-    // Login failed
     echo "Credenciais inválidas!";
 }
 ?>

@@ -8,5 +8,5 @@ document
       .value.trim();
     localStorage.setItem("tipoProjeto", tipoProjeto);
 
-    window.location.href = "index.html";
+    window.location.href = "questionario.php";
   });

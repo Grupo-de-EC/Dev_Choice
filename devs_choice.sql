@@ -80,3 +80,53 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+/*-------------SQL para o Questionario-------------*/
+
+CREATE TABLE perguntas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    texto VARCHAR(255) NOT NULL,
+    tipo ENUM('texto', 'multipla_escolha', 'unica_escolha') NOT NULL
+);
+
+
+CREATE TABLE opcoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pergunta_id INT,
+    texto VARCHAR(255) NOT NULL,
+    FOREIGN KEY (pergunta_id) REFERENCES perguntas(id) ON DELETE CASCADE
+);
+
+CREATE VIEW perguntas_com_opcoes AS
+SELECT
+    p.id AS pergunta_id,
+    p.texto AS pergunta_texto,
+    o.id AS opcao_id,
+    o.texto AS opcao_texto
+FROM
+    perguntas p
+LEFT JOIN
+    opcoes o ON p.id = o.pergunta_id;
+
+
+CREATE TABLE respostas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(100) NOT NULL,
+    pergunta_id INT,
+    resposta TEXT,
+    FOREIGN KEY (pergunta_id) REFERENCES perguntas(id) ON DELETE CASCADE
+);
+
+CREATE VIEW respostas_completa AS
+SELECT
+    r.id AS resposta_id,                 -- ID da resposta
+    r.usuario AS usuario_nome,            -- Nome do usuário
+    p.texto AS pergunta_texto,           -- Texto da pergunta
+    p.tipo AS pergunta_tipo,             -- Tipo da pergunta (texto, múltipla escolha única escolha)
+    r.resposta AS resposta_texto         -- Resposta do usuário
+FROM
+    respostas r
+JOIN
+    perguntas p ON r.pergunta_id = p.id; -- Fazendo o JOIN entre 'respostas' e 'perguntas'
+
