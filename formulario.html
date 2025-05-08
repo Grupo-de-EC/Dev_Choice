@@ -1,27 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário Dev's Choice</title>
-    <link rel="stylesheet" href="formulario.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulario</title>
+  <link rel="stylesheet" href="formulario.css">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Bem-vindo ao Dev's Choice</h2>
-        <p>Responda algumas perguntas para encontrar a melhor tecnologia para seu projeto.</p>
-        <form id="login-form">
-            <select required>
-                <option value="">Nível de experiência</option>
-                <option value="iniciante">Iniciante</option>
-                <option value="intermediario">Intermediário</option>
-                <option value="avancado">Avançado</option>
-            </select>
-            <input type="text" placeholder="Nome do projeto" required>
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
-    <script src="formulario.js"></script>
-</body>
+  <div class="form-container">
+    <h2>Preencha o formulario a seguir</h2>
+    <p>Responda algumas perguntas e receba uma sugestão personalizada.</p>
+
+    <form id="devForm">
+      <input type="text" id="nomeProjeto" placeholder="Nome do projeto">
+
+      <select id="tipoProjeto" required>
+        <option value="">Tipo de projeto</option>
+        <option value="web">Site ou sistema web</option>
+        <option value="mobile">Aplicativo mobile</option>
+        <option value="desktop">Programa para desktop</option>
+        <option value="iot">Projeto com hardware / IoT</option>
+        <option value="jogo">Jogo digital</option>
+        <option value="analise">Análise de dados / IA</option>
+        <option value="analise">Outros</option>
+      </select>
+
+      <select id="experiencia" required>
+        <option value="">Seu nível de experiência</option>
+        <option value="iniciante">Iniciante</option>
+        <option value="intermediario">Intermediário</option>
+        <option value="avancado">Avançado</option>
+      </select>
+
+      <input type="text" id="objetivo" placeholder="O que você quer que esse projeto faça?" required>
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <div id="sugestao" style="margin-top: 20px; font-size: 16px; color: #a5f3fc;"></div>
+  </div>
+
+  <script src="formulario.js"></script>
 </body>
 </html>
