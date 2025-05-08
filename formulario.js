@@ -1,12 +1,11 @@
-document
-  .getElementById("login-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
+document.getElementById('devForm').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-    const tipoProjeto = document
-      .querySelector("input[type='text']")
-      .value.trim();
-    localStorage.setItem("tipoProjeto", tipoProjeto);
+  // Aqui você pode coletar os dados se quiser usar depois
+  const tipo = document.getElementById('tipoProjeto').value;
+  const experiencia = document.getElementById('experiencia').value;
+  const objetivo = document.getElementById('objetivo').value.trim();
 
-    window.location.href = "questionario.php";
-  });
+  // Apenas redireciona para index.html
+  window.location.href = "index.html";
+});
