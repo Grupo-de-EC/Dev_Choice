@@ -12,10 +12,11 @@
     <p>Responda algumas perguntas e receba uma sugestão personalizada.</p>
 
     <form id="devForm">
-      <input type="text" id="nomeProjeto" placeholder="Nome do projeto">
+      <input type="text" id="nomeProjeto" placeholder="Nome do projeto" required>
+    </form>
 
       <select id="tipoProjeto" required>
-        <option value="">Tipo de projeto</option>
+        <option value="" disabled selected hidden>Tipo de projeto</option>
         <option value="web">Site ou sistema web</option>
         <option value="mobile">Aplicativo mobile</option>
         <option value="desktop">Programa para desktop</option>
@@ -26,7 +27,7 @@
       </select>
 
       <select id="experiencia" required>
-        <option value="">Seu nível de experiência</option>
+        <option value="" disabled selected hidden>Seu nível de experiência</option>
         <option value="iniciante">Iniciante</option>
         <option value="intermediario">Intermediário</option>
         <option value="avancado">Avançado</option>
