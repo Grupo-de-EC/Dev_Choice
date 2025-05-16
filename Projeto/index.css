@@ -48,6 +48,75 @@ body {
   font-weight: bold;
 }
 
+
+.nav-links a .alto-contraste{
+  color: limegreen;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 15px;
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  padding: 6px 8px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: blue;
+}
+
+
+
+.dropdown-toggle::after {
+  content: " ▼";
+  font-size: 0.8rem;
+}
+
+.dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 5px 0;
+  border-radius: 4px;
+  z-index: 100;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+
+.dropdown-menu li a {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 .btn-contrast {
   background-color: #ffc107;
   color: black;
