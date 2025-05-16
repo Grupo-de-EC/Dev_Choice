@@ -2,17 +2,16 @@
 session_start();
 $conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
 
-echo "adminLogin.php is working!";
-
-// Check for DB connection error
+// Verifica se a conexão com o banco foi bem-sucedida
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
+// Verifica se o formulário foi enviado via POST
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 
-// Look up admin user by email and role
+// Consulta para verificar o usuário admin pelo email e role
 $query = "SELECT * FROM users WHERE email = ? AND role = 'admin'";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $email);
@@ -20,13 +19,22 @@ $stmt->execute();
 $result = $stmt->get_result();
 $admin = $result->fetch_assoc();
 
-if ($admin && $admin['password'] === $password) {
-    $_SESSION['role'] = 'admin';
-    $_SESSION['name'] = $admin['name'];
+if ($admin) {
+    var_dump($admin); // Verifique os dados do admin
+    if ($admin && password_verify($password, $admin['password'])) {
+        // Usando password_verify para segurança
+        $_SESSION['admin_logged_in'] = true; // Indica que o admin está logado
+        $_SESSION['role'] = 'admin';
+        $_SESSION['name'] = $admin['name'];
 
-    header("Location: admin.html");
-    exit();
+        // Redireciona para a página do admin
+        header("Location: admin.php");
+        exit();
+    } else {
+        // Se as credenciais estiverem incorretas
+        echo "Senha incorreta!";
+    }
 } else {
-    echo "Credenciais inválidas!";
+    echo "Usuário não encontrado!";
 }
 ?>
