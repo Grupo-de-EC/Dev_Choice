@@ -45,9 +45,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `name`, `password`, `role`, `email`) VALUES
 (9, 'Mason Greenwood', '', 'user', NULL),
-(10, 'Adm02', 'pateta02', 'admin', 'batatao@devschoice.com'),
-(11, 'Adm01', 'pateta01', 'admin', 'shinigami@devschoice.com'),
-(16, 'Adm03', 'pateta03', 'admin', 'fantasmaretro@devschoice.com'),
+(10, 'Adm02', '$2y$10$PG9U6ftvTtPcnfie.cF/1evSrmX6x17G6AdHgNbIyjLFztBZbRl66', 'admin', 'batatao@devschoice.com'),
+(11, 'Adm01', '$2y$10$3W08gg4VM6Nd1abkzcp1UeXLn4IH44HbuAQXgcL0xJuX6JeyxtIhm', 'admin', 'shinigami@devschoice.com'),
+(16, 'Adm03', '$2y$10$tdkyV6cDZpMfQ/MW3FNBFuG89Dqh4tJsm.fKgLk.2fI5cAkRpoy8q', 'admin', 'fantasmaretro@devschoice.com'),
 (18, 'tra', '', 'user', NULL),
 (19, 'Matheus Becchi', '', 'user', NULL);
 
