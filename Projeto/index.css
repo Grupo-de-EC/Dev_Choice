@@ -14,7 +14,7 @@ body {
 #fullscreenBtn {
   position: absolute;
   top: 10px;
-  right: 330px;
+  right: 345px;
   z-index: 10;
   padding: 8px 12px;
   font-size: 1rem;
@@ -269,18 +269,8 @@ body.alto-contraste .dropdown-menu li a:hover {
   color: black;
 }
 
-
 body.alto-contraste .nav-links a:hover {
   color: limegreen;
-}
-
-
-.dropdown-menu li a.alto-contraste {
-  display: block;
-  padding: 8px 15px;
-  white-space: nowrap;
-  color:white;
-  text-decoration: none;
 }
 
 body.alto-contraste #chat-container {
@@ -290,10 +280,6 @@ body.alto-contraste #chat-container {
 
 body.alto-contraste .btn-chat {
   background-color: limegreen;
-}
-
-.nav-links a .alto-contraste{
-  color: limegreen;
 }
 
 footer.alto-contraste{
