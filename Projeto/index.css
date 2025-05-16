@@ -48,29 +48,6 @@ body {
   font-weight: bold;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-}
-
-.nav-links li {
-  margin: 0 15px;
-  position: relative;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: black;
-  font-size: 1rem;
-  padding: 6px 8px;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: blue;
-}
-
 .dropdown-toggle::after {
   content: " ▼";
   font-size: 0.8rem;
