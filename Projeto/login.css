@@ -2,96 +2,316 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: Arial, sans-serif;
+  background: url('Fundo_Branco.jpg') no-repeat center center/cover;
+  color: black;
+}
+
+/*---Botão De Tela Cheia---*/
+#fullscreenBtn {
+  position: absolute;
+  top: 10px;
+  right: 345px;
+  z-index: 10;
+  padding: 8px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#chat-wrapper {
   position: relative;
 }
 
-.admin-button {
+/*------Barra de Navegação------*/
+
+.navbar {
+  background-color: transparent;
+  padding: 15px 20px;
+  box-shadow: 0 4px 6px rgba(173, 216, 230, 0.7);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-size: 1.8rem;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.nav-links a .alto-contraste{
+  color: limegreen;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 15px;
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  padding: 6px 8px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: blue;
+}
+
+
+
+.dropdown-toggle::after {
+  content: " ▼";
+  font-size: 0.8rem;
+}
+
+.dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
-  top: 20px;
-  right: 20px;
-}
-.admin-button button {
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-.admin-button button:hover {
-  background-color: #c9302c;
-  transform: scale(1.05);
-}
-
-.login-container {
+  top: 30px;
+  left: 0;
   background-color: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  width: 350px;
-  text-align: center;
-  animation: fadeIn 0.5s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 5px 0;
+  border-radius: 4px;
+  z-index: 100;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-      transform: translateY(-10px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
 
-h2 {
-  font-size: 26px;
-  margin-bottom: 15px;
+.dropdown-menu li a {
+  display: block;
+  padding: 8px 15px;
+  white-space: nowrap;
   color: #333;
+  text-decoration: none;
 }
 
-input[type="text"], input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid #ccc;
+.dropdown-menu li a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.btn-contrast {
+  background-color: #ffc107;
+  color: black;
+  border: none;
+  padding: 12px 18px;
   border-radius: 6px;
-  transition: border-color 0.3s ease;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
-  border-color: #0a74da;
-  outline: none;
+.btn-contrast:hover {
+  background-color: #e0a800;
+  transform: scale(1.1);
 }
 
+/*------Fim da Barra de Navegação------*/
 
-button {
+#chat-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  max-height: calc(
+    100vh - 200px
+  );
+  overflow: hidden;
+}
+
+#chat-container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  max-width: 900px;
+  height: 300px;
+  background: white;
+  border: 5px solid lightblue;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+#messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  background-color: lightblue;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  max-width: 70%;
+  word-wrap: break-word;
+  color: black;
+  box-shadow: none;
+  border: none;
+}
+
+#input-area {
+  display: flex;
+  gap: 10px;
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  z-index: 2;
+  box-shadow: none;
+  border: none;
+}
+
+#user-input {
+  flex: 1;
   padding: 12px;
-  background: linear-gradient(135deg, #0a74da, #005b96);
+  border: 1px solid #a9a9a9;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.btn-chat {
+  background-color: #007bff;
   color: white;
   border: none;
+  padding: 12px 20px;
   border-radius: 6px;
-  font-size: 18px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  margin-top: 10px;
+  transition: background-color 0.3s;
 }
 
-button:hover {
-  background: linear-gradient(135deg, #005b96, #003f6b);
-  transform: scale(1.05);
+.btn-chat:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  font-size: 0.9rem;
+  color: black; 
+  box-shadow: none; /* remove sombra */
+  border: none;
+}
+
+body.alto-contraste {
+  background: url('Fundo.jpg') no-repeat center center/cover !important;
+  color: limegreen;
+}
+
+body.alto-contraste .nav-links a {
+  color: limegreen !important;
+}
+
+
+.navbar.alto-contraste {
+  background-color: black;
+  box-shadow: 0 4px 6px rgba(50, 205, 50, 0.7);
+}
+
+.navbar.alto-contraste .dropdown-menu {
+  background-color: #333;
+  color: limegreen;
+}
+
+body.alto-contraste .dropdown-menu {
+  background-color: white;
+}
+
+body.alto-contraste .dropdown-menu li a {
+  color: limegreen;
+}
+
+body.alto-contraste .dropdown-menu li a:hover {
+  background-color: #222;
+  color: white;
+}
+
+
+.navbar.alto-contraste .nav-brand {
+  color: limegreen;
+}
+
+.btn-contrast.alto-contraste {
+  background-color: limegreen;
+  color: black;
+}
+
+body.alto-contraste .nav-links a:hover {
+  color: limegreen;
+}
+
+body.alto-contraste #chat-container {
+  border-color: limegreen;
+  background-color: black;
+}
+
+body.alto-contraste .btn-chat {
+  background-color: limegreen;
+}
+
+footer.alto-contraste{
+  color: limegreen;
+}
+
+body.alto-contraste #user-input {
+  background-color: #222;
+  color: white;
+}
+
+body.alto-contraste .message{
+  background-color: limegreen;
+}
+
+#boasVindas {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  color: black;
+  text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.5);
+}
+
+body.alto-contraste #boasVindas {
+  color: limegreen;
+  text-shadow: 2px 2px 5px rgba(0, 255, 0, 0.5);
+}
+
+body.alto-contraste #boasVindas span {
+  color: limegreen;
+  font-weight: bold;
 }
 
 /*Responsividade*/
@@ -110,3 +330,50 @@ button:hover {
       font-size: 22px;
   }
 }
+
+/*------ Estilo personalizado para mensagens do usuário e da IA (Quantika) ------*/
+
+.user {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 15px 15px 0 15px;
+  max-width: 70%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-size: 0.95rem;
+  margin-left: auto;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.bot {
+  align-self: flex-start;
+  background-color: #f0f8ff;
+  color: #222;
+  padding: 10px 15px;
+  border-radius: 15px 15px 15px 0;
+  max-width: 70%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-left: 10px;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+/*------ Alto contraste para mensagens personalizadas ------*/
+
+body.alto-contraste .user {
+  background-color: limegreen;
+  color: black;
+}
+
+body.alto-contraste .bot {
+  background-color: black;
+  color: limegreen;
+  border: 1px solid limegreen;
+}
+
