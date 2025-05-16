@@ -43,6 +43,20 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+//Botão Tela Cheia Do Chat
+
+document.getElementById("fullscreenBtn").addEventListener("click", () => {
+  const chatContainer = document.getElementById("chat-container");
+  
+  if (!document.fullscreenElement) {
+    chatContainer.requestFullscreen().catch(err => {
+      console.error(`Erro ao ativar tela cheia: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+});
+
 //Chat da IA
 
 const apiKey =
