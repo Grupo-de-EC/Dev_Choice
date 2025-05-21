@@ -1,0 +1,134 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Corpo da página */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradiente de fundo */
+    backdrop-filter: blur(4px);
+}
+
+/* Contêiner do formulário */
+.form-container {
+    background: rgba(15, 23, 42, 0.9); /* Fundo escuro com transparência */
+    padding: 30px 25px;
+    border-radius: 16px;
+    color: #fff;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out; /* Animação suave de entrada */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra suave */
+}
+
+/* Título do formulário */
+h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+/* Estilo dos campos de input, textarea e botões */
+select,
+input,
+textarea,
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.3s ease; /* Transição suave para interações */
+}
+
+/* Estilo dos inputs, textarea e selects */
+select,
+input,
+textarea {
+    background: #1e293b;
+    color: #e2e8f0; /* Cor do texto clara */
+}
+
+/* Foco nos campos de input, textarea e select */
+select:focus,
+input:focus,
+textarea:focus {
+    outline: none;
+    background: #334155;
+    box-shadow: 0 0 0 2px #3b82f6; /* Destaque azul no foco */
+}
+
+/* Estilo do botão */
+button {
+    background: linear-gradient(135deg, #3b82f6, #2563eb); /* Gradiente de fundo */
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #2563eb, #1e40af); /* Efeito de hover no botão */
+    transform: scale(1.02); /* Aumenta o tamanho ao passar o mouse */
+}
+
+/* Estilo do campo de avaliação com estrelas */
+.stars {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 20px;
+}
+
+.stars input[type="radio"] {
+    display: none;
+}
+
+.stars label {
+    font-size: 2em;
+    cursor: pointer;
+    color: #d1d5db; /* Cor das estrelas padrão */
+    margin-right: 5px;
+    transition: color 0.3s ease; /* Transição para cor */
+}
+
+.stars input[type="radio"]:checked ~ label {
+    color: gold; /* Cor das estrelas selecionadas */
+}
+
+.stars input[type="radio"]:hover ~ label,
+.stars input[type="radio"]:checked + label {
+    color: gold; /* Cor das estrelas ao passar o mouse */
+}
+
+/* Animação de fade-in para a entrada do formulário */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 400px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}
