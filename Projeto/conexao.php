@@ -5,13 +5,13 @@ function conecta_servidor() {
     $pass = "";
     $server = "localhost";
 
-    $conn = mysqli_connect($server, $user, $pass, $db_name);
+    $conn = mysqli_connect($server, $user, $pass, $db_name, 3307);
 
     if (!$conn) {
         die("Conexão falhou: " . mysqli_connect_error());
     }
 
-    error_log("Conexão bem-sucedida!");  // Exibe no terminal ou log
+    error_log("Conexão bem-sucedida!");
     return $conn;
 }
 ?>

@@ -46,4 +46,8 @@ const feedbacks = [
       }
     }
   });
-  
+
+function editarPerfil() {
+  window.location.href = "editarPerfil.html";
+}
+

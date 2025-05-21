@@ -15,13 +15,12 @@ document
   .getElementById("user-input")
   .addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
-      event.preventDefault(); //Evita comportamento padrão como quebrar linha
-      sendMessage(); //Chama a função
+      event.preventDefault();
+      sendMessage();
     }
   });
 
 document.getElementById("contrasteBtn").addEventListener("click", () => {
-  //Ativa/desativa a classe de alto contraste no body e nos elementos específicos
   document.body.classList.toggle("alto-contraste");
   document.querySelector(".navbar").classList.toggle("alto-contraste");
   document.querySelector(".btn-contrast").classList.toggle("alto-contraste");
@@ -78,7 +77,7 @@ async function sendMessage() {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + apiKey,
-          "HTTP-Referer": "http://localhost/Dev_Choice/index.html", // troque para seu site real
+          "HTTP-Referer": "http://localhost/Dev_Choice/index.html",
           "X-Title": "Dev's Choice",
         },
         body: JSON.stringify({
@@ -106,14 +105,12 @@ function addMessage(text, classe) {
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-// Quando a página é carregada, verifica o localStorage e exibe os dados de boas-vindas
 window.addEventListener("DOMContentLoaded", function () {
   const nome = localStorage.getItem("nomeUsuario");
-  const nomeProjeto = localStorage.getItem("nomeProjeto"); // Agora vamos pegar o nome do projeto
+  const nomeProjeto = localStorage.getItem("nomeProjeto");
   const projeto = localStorage.getItem("tipoProjeto");
   const boasVindas = document.getElementById("boasVindas");
 
-  // Exibe as boas-vindas com o nome e o nome do projeto
   if (nome && nomeProjeto) {
     boasVindas.innerHTML = `Bem-vindo, ${nome}<br>Seu projeto é: ${nomeProjeto}!`;
   } else if (nome) {
@@ -122,14 +119,12 @@ window.addEventListener("DOMContentLoaded", function () {
     boasVindas.innerHTML = `Bem-vindo ao projeto <span>${nomeProjeto}</span>!`;
   }
 
-  // Mensagem de boas-vindas da IA (opcional)
   addMessage(
     "Olá! 👋 Eu sou a Quantika, sua assistente virtual. Estou aqui para te ajudar com dúvidas sobre programação, ferramentas e desenvolvimento. Vamos começar?",
     "bot"
   );
 });
 
-// Função para adicionar a mensagem no chat
 function addMessage(text, classe) {
   const messagesDiv = document.getElementById("messages");
   const div = document.createElement("div");
@@ -139,8 +134,6 @@ function addMessage(text, classe) {
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-
-  // Verifica se existem dados do formulário
   const experiencia = localStorage.getItem("experienciaUsuario");
   const tipoProjeto = localStorage.getItem("tipoProjeto");
   const objetivo = localStorage.getItem("objetivoProjeto");
@@ -148,7 +141,6 @@ function addMessage(text, classe) {
   if (experiencia && tipoProjeto && objetivo) {
     const mensagemInicial = `O usuario de nível ${experiencia} escolheu ${tipoProjeto} e ele quer que o site faça ${objetivo}.`;
 
-    // Também envia para a IA
     fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -172,7 +164,6 @@ function addMessage(text, classe) {
       console.error(err);
     });
 
-    // Limpa os dados do localStorage para não enviar novamente ao atualizar
     localStorage.removeItem("experienciaUsuario");
     localStorage.removeItem("objetivoProjeto");
   }

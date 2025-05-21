@@ -1,6 +1,6 @@
 <?php
 // Código para processar o formulário
-$conn = new mysqli("localhost", "root", "", "devs_choice");
+$conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
