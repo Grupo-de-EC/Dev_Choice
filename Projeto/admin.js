@@ -48,6 +48,6 @@ const feedbacks = [
   });
 
 function editarPerfil() {
-  window.location.href = "editarPerfil.html";
+  window.location.href = "editarPerfil.php";
 }
 

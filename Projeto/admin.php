@@ -52,8 +52,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
     <section id="perfil">
       <h2>Perfil do Administrador</h2>
-      <p>Nome: Admin Principal</p>
-      <p>Email: admin@exemplo.com</p>
+      <p>Nome: <?php echo $_SESSION['name']; ?></p>
+      <p>Email: <?php echo $_SESSION['email']; ?></p>
       <button onclick="editarPerfil()">Editar Perfil</button>
     </section>
   </main>
