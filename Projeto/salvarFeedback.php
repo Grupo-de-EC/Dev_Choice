@@ -12,6 +12,6 @@ if ($estrelas > 0) {
 }
 
 $conn->close();
-header("Location: index.php");
+header("Location: index.html");
 exit();
 ?>
