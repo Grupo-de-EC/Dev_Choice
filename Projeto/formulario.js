@@ -16,5 +16,5 @@ document.getElementById('devForm').addEventListener('submit', function(e) {
   localStorage.setItem('tipoProjeto', tipo);
   localStorage.setItem('experienciaUsuario', experiencia);
   localStorage.setItem('objetivoProjeto', objetivo);
-  window.location.href = "index.php";
+  window.location.href = "index.html";
 });
