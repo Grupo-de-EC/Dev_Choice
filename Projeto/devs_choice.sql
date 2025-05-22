@@ -130,3 +130,9 @@ FROM
 JOIN
     perguntas p ON r.pergunta_id = p.id; -- Fazendo o JOIN entre 'respostas' e 'perguntas'
 
+CREATE TABLE feedbacks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    comentario TEXT,
+    estrelas INT CHECK (estrelas BETWEEN 1 AND 5),
+    data_envio DATETIME DEFAULT CURRENT_TIMESTAMP
+);

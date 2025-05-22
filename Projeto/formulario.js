@@ -4,7 +4,7 @@ document.getElementById('devForm').addEventListener('submit', function(e) {
   const nomeProjeto = document.getElementById('nomeProjeto').value.trim();
   if (!nomeProjeto) {
     alert('O nome do projeto é obrigatório!');
-    return; // Impede o envio do formulário
+    return;
   }
 
   const tipo = document.getElementById('tipoProjeto').value;
@@ -16,7 +16,5 @@ document.getElementById('devForm').addEventListener('submit', function(e) {
   localStorage.setItem('tipoProjeto', tipo);
   localStorage.setItem('experienciaUsuario', experiencia);
   localStorage.setItem('objetivoProjeto', objetivo);
-
-  // Redirecionar para a página inicial (index.html)
-  window.location.href = "index.html";
+  window.location.href = "index.php";
 });

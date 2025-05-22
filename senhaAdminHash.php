@@ -5,7 +5,6 @@ if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-// Lista de admins com email e senha em texto puro
 $admins = [
     ['email' => 'batatao@devschoice.com', 'senha' => 'pateta02'],
     ['email' => 'shinigami@devschoice.com', 'senha' => 'pateta01'],

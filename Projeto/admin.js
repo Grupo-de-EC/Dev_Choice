@@ -1,53 +1,46 @@
-// Simulação de feedbacks
-const feedbacks = [
-    "Excelente experiência!",
-    "Achei o sistema fácil de usar.",
-    "Poderia ter mais opções.",
-    "A IA me ajudou bastante!",
-  ];
+
   
-  const lista = document.getElementById("lista-feedbacks");
-  feedbacks.forEach(f => {
-    const li = document.createElement("li");
-    li.textContent = f;
-    lista.appendChild(li);
-  });
-  
-  function editarQuestionario() {
+function editarQuestionario() {
     alert("Função para editar questionários ainda será implementada.");
-  }
-  
-  function atualizarIA() {
+}
+
+function atualizarIA() {
     alert("A IA foi atualizada com sucesso!");
-  }
+}
   
-  function editarPerfil() {
-    alert("Você pode alterar seu nome ou email aqui.");
-  }
-  
-  // Gráfico de satisfação com Chart.js
-  const ctx = document.getElementById("graficoSatisfacao").getContext("2d");
-  new Chart(ctx, {
+function editarPerfil() {
+    window.location.href = "editarPerfil.php";
+}
+console.log("Dados recebidos:", dadosEstrelas);
+
+  // Gráfico de Satisfação com dados do PHP
+const ctx = document.getElementById("graficoSatisfacao").getContext("2d");
+new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Janeiro", "Fevereiro", "Março", "Abril"],
+      labels: ["1 Estrela", "2 Estrelas", "3 Estrelas", "4 Estrelas", "5 Estrelas"],
       datasets: [{
-        label: "Nível de Satisfação",
-        data: [80, 90, 75, 88],
-        backgroundColor: "#007bff"
-      }]
-    },
+        label: "Quantidade de Avaliações",
+        data: dadosEstrelas,
+        backgroundColor: "#3b82f6"
+    }]
+  },
     options: {
       responsive: true,
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          precision: 0,
+          title: {
+            display: true,
+            text: 'Quantidade de Comentários'
         }
       }
     }
-  });
+  }
+});
+  
 
 function editarPerfil() {
   window.location.href = "editarPerfil.php";
 }
-

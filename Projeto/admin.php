@@ -4,6 +4,20 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     header("Location: adminLogin.php");
     exit();
 }
+
+$conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
+$graficoData = [1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0];
+
+if (!$conn->connect_error) {
+    $sql = "SELECT estrelas, COUNT(*) as quantidade FROM feedbacks GROUP BY estrelas";
+    $result = $conn->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $estrela = (int)$row['estrelas'];
+        $graficoData[$estrela] = (int)$row['quantidade'];
+    }
+    $conn->close();
+}
+$graficoJS = json_encode(array_values($graficoData));
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +51,27 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
     <section id="feedbacks">
       <h2>Feedbacks dos Usuários</h2>
-      <ul id="lista-feedbacks"></ul>
+      <ul id="lista-feedbacks">
+        <?php
+          // Conexão com o banco
+          $conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
+          if ($conn->connect_error) {
+              echo "<li>Erro ao conectar com o banco de dados.</li>";
+          } else {
+              $sql = "SELECT comentario, estrelas, data_envio FROM feedbacks ORDER BY data_envio DESC LIMIT 5";
+              $result = $conn->query($sql);
+              if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) {
+                      $estrelas = str_repeat("⭐", (int)$row['estrelas']);
+                      echo "<li><strong>{$estrelas}</strong> - " . htmlspecialchars($row['comentario']) . "</li>";
+                  }
+              } else {
+                  echo "<li>Nenhum feedback ainda.</li>";
+              }
+              $conn->close();
+          }
+        ?>
+      </ul>
     </section>
 
     <section id="atualizacao">
@@ -63,6 +97,9 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="admin.js" defer></script>
+<script>
+  const dadosEstrelas = <?php echo $graficoJS; ?>;
+</script>
+<script src="admin.js" defer></script>
 </body>
 </html>

@@ -77,7 +77,7 @@ async function sendMessage() {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + apiKey,
-          "HTTP-Referer": "http://localhost/Dev_Choice/index.html",
+          "HTTP-Referer": "http://localhost/Dev_Choice/index.php",
           "X-Title": "Dev's Choice",
         },
         body: JSON.stringify({
@@ -146,7 +146,7 @@ function addMessage(text, classe) {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + apiKey,
-        "HTTP-Referer": "http://localhost/Dev_Choice/index.html",
+        "HTTP-Referer": "http://localhost/Dev_Choice/index.php",
         "X-Title": "Dev's Choice",
       },
       body: JSON.stringify({
@@ -168,3 +168,8 @@ function addMessage(text, classe) {
     localStorage.removeItem("objetivoProjeto");
   }
 
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1);
+    alert("Não é possível voltar para a página anterior. Faça login novamente.");
+  };
