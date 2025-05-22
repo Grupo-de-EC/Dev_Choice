@@ -58,7 +58,7 @@ document.getElementById("fullscreenBtn").addEventListener("click", () => {
 
 //Chat da IA
 
-const apiKey ="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"; // Substitua pela sua chave do OpenRouter
+const apiKey ="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"; // Substitua pela sua chave do OpenRouter
 
 async function sendMessage() {
   const input = document.getElementById("user-input");
