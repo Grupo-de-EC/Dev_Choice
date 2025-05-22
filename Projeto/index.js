@@ -77,7 +77,7 @@ async function sendMessage() {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + apiKey,
-          "HTTP-Referer": "http://localhost/Dev_Choice/index.php",
+          "HTTP-Referer": "http://localhost/Dev_Choice/index.html",
           "X-Title": "Dev's Choice",
         },
         body: JSON.stringify({
@@ -146,7 +146,7 @@ function addMessage(text, classe) {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + apiKey,
-        "HTTP-Referer": "http://localhost/Dev_Choice/index.php",
+        "HTTP-Referer": "http://localhost/Dev_Choice/index.html",
         "X-Title": "Dev's Choice",
       },
       body: JSON.stringify({
