@@ -58,8 +58,7 @@ document.getElementById("fullscreenBtn").addEventListener("click", () => {
 
 //Chat da IA
 
-const apiKey =
-  "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"; // Substitua pela sua chave do OpenRouter
+const apiKey ="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"; // Substitua pela sua chave do OpenRouter
 
 async function sendMessage() {
   const input = document.getElementById("user-input");
@@ -77,7 +76,7 @@ async function sendMessage() {
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + apiKey,
-          "HTTP-Referer": "http://localhost/Dev_Choice/index.html",
+          "HTTP-Referer": "http://localhost/Devs_Choice/Projeto/index.html",
           "X-Title": "Dev's Choice",
         },
         body: JSON.stringify({
@@ -146,7 +145,7 @@ function addMessage(text, classe) {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + apiKey,
-        "HTTP-Referer": "http://localhost/Dev_Choice/index.html",
+        "HTTP-Referer": "http://localhost/Devs_Choice/Projeto/index.html",
         "X-Title": "Dev's Choice",
       },
       body: JSON.stringify({
