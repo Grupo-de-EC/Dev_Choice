@@ -88,20 +88,27 @@ async function sendMessage() {
 
     const dados = await resposta.json();
     const respostaIA = dados.choices[0].message.content;
-    addMessage("Quantika: " + respostaIA, "bot");
+    addMessageGradualmente("Quantika: " + respostaIA, "bot");
   } catch (error) {
     addMessage("Erro ao conectar com a IA.", "bot");
     console.error(error);
   }
 }
 
-function addMessage(text, classe) {
+function addMessageGradualmente(text, classe) {
   const messagesDiv = document.getElementById("messages");
   const div = document.createElement("div");
   div.className = classe;
-  div.textContent = text;
   messagesDiv.appendChild(div);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+  let i = 0;
+  const interval = setInterval(() => {
+    div.textContent += text.charAt(i);
+    i++;
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    if (i >= text.length) clearInterval(interval);
+  }, 30); // 30ms por letra
 }
 
 window.addEventListener("DOMContentLoaded", function () {
