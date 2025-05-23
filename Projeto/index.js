@@ -58,7 +58,7 @@ document.getElementById("fullscreenBtn").addEventListener("click", () => {
 
 //Chat da IA
 
-const apiKey ="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"; // Substitua pela sua chave do OpenRouter
+const apiKey ="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"; // Substitua pela sua chave do OpenRouter
 
 async function sendMessage() {
   const input = document.getElementById("user-input");
@@ -119,7 +119,7 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   addMessage(
-    "Olá! 👋 Eu sou a Quantika, sua assistente virtual. Estou aqui para te ajudar com dúvidas sobre programação, ferramentas e desenvolvimento. Vamos começar?",
+    "Olá! 👋 Eu sou a Quantika, sua assistente virtual. Estou aqui para te ajudar com dúvidas sobre programação, nesse exato momento estou analisando seu formulário, então peço que aguarde um pouco.",
     "bot"
   );
 });
