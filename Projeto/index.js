@@ -20,14 +20,6 @@ document
     }
   });
 
-document.getElementById("contrasteBtn").addEventListener("click", () => {
-  document.body.classList.toggle("alto-contraste");
-  document.querySelector(".navbar").classList.toggle("alto-contraste");
-  document.querySelector(".btn-contrast").classList.toggle("alto-contraste");
-  document.querySelector("footer").classList.toggle("alto-contraste");
-  document.querySelector("#input-area").classList.toggle("alto-contraste");
-});
-
 window.addEventListener("DOMContentLoaded", function () {
   const nome = localStorage.getItem("nomeUsuario"); 
   const projeto = localStorage.getItem("tipoProjeto");
