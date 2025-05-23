@@ -50,7 +50,7 @@ document.getElementById("fullscreenBtn").addEventListener("click", () => {
 
 //Chat da IA
 
-const apiKey ="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"; // Substitua pela sua chave do OpenRouter
+const apiKey ="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"; // Substitua pela sua chave do OpenRouter
 
 async function sendMessage() {
   const input = document.getElementById("user-input");
@@ -80,20 +80,27 @@ async function sendMessage() {
 
     const dados = await resposta.json();
     const respostaIA = dados.choices[0].message.content;
-    addMessage("Quantika: " + respostaIA, "bot");
+    addMessageGradualmente("Quantika: " + respostaIA, "bot");
   } catch (error) {
     addMessage("Erro ao conectar com a IA.", "bot");
     console.error(error);
   }
 }
 
-function addMessage(text, classe) {
+function addMessageGradualmente(text, classe) {
   const messagesDiv = document.getElementById("messages");
   const div = document.createElement("div");
   div.className = classe;
-  div.textContent = text;
   messagesDiv.appendChild(div);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+  let i = 0;
+  const interval = setInterval(() => {
+    div.textContent += text.charAt(i);
+    i++;
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    if (i >= text.length) clearInterval(interval);
+  }, 25); // 30ms por letra
 }
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -111,7 +118,7 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   addMessage(
-    "Olá! 👋 Eu sou a Quantika, sua assistente virtual. Estou aqui para te ajudar com dúvidas sobre programação, ferramentas e desenvolvimento. Vamos começar?",
+    "Olá! 👋 Eu sou a Quantika, sua assistente virtual. Estou aqui para te ajudar com dúvidas sobre programação, nesse exato momento estou analisando seu formulário, então peço que aguarde um pouco.",
     "bot"
   );
 });
