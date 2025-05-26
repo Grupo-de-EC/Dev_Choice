@@ -22,7 +22,6 @@ html, body {
 .nav-container {
   display: flex;
   justify-content: space-between; 
-  margin-left: -1200px;
 }
 
 .nav-brand {
