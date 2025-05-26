@@ -171,3 +171,55 @@ function addMessage(text, classe) {
     history.go(1);
     alert("Não é possível voltar para a página anterior. Faça login novamente.");
   };
+
+  async function sendMessage() {
+    const input = document.getElementById("user-input");
+    const message = input.value.trim();
+    if (!message) return;
+  
+    addMessage("Você: " + message, "user");
+    input.value = "";
+  
+    // Adiciona o indicador de "Digitando..."
+    const messagesDiv = document.getElementById("messages");
+    const typingDiv = document.createElement("div");
+    typingDiv.className = "bot";
+    typingDiv.id = "typingIndicator";
+    typingDiv.textContent = "Quantika está pensando...";
+    messagesDiv.appendChild(typingDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  
+    try {
+      const resposta = await fetch(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + apiKey,
+            "HTTP-Referer": "http://localhost/Devs_Choice/Projeto/index.html",
+            "X-Title": "Dev's Choice",
+          },
+          body: JSON.stringify({
+            model: "openai/gpt-3.5-turbo",
+            messages: [{ role: "user", content: message }],
+          }),
+        }
+      );
+  
+      const dados = await resposta.json();
+      const respostaIA = dados.choices[0].message.content;
+  
+      // Remove o "Digitando..." antes de mostrar a resposta
+      typingDiv.remove();
+  
+      // Mostra a resposta da Quantika com animação gradual
+      addMessageGradualmente("Quantika: " + respostaIA, "bot");
+  
+    } catch (error) {
+      typingDiv.remove(); // Remove mesmo que dê erro
+      addMessage("Erro ao conectar com a IA.", "bot");
+      console.error(error);
+    }
+  }
+  
