@@ -95,17 +95,52 @@ html, body {
   transform: scale(1.1);
 }
 
+/* Mini-chat fixo colado à esquerda */
+#mini-chat {
+  position: fixed;
+  top: 170px;       /* distancia do topo, ajusta conforme seu layout */
+  left: 10px;       /* colado perto da borda esquerda */
+  width: 280px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  color: #222;
+  z-index: 1000;    /* fica sobreposto */
+}
+
+/* Título do mini-chat */
+#mini-chat h4 {
+  margin-bottom: 10px;
+  font-weight: 700;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+  color: #007bff;
+}
+
+/* Área das mensagens */
+#mini-messages {
+  height: calc(100% - 40px); /* para sobrar espaço para título */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Chat principal centralizado na tela */
 #chat-container {
+  max-width: 1000px;      /* largura máxima do chat principal */
+  margin: 10px auto;    /* margem vertical e centraliza horizontal */
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 6000px;
   height: 500px;
   background: white;
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  margin: 0 auto;
+  position: relative;    /* para z-index se precisar */
+  left: 50px;
 }
 
 #messages {
