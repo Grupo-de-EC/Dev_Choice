@@ -13,26 +13,36 @@
         <a href="Logout.php" id="logoutButton" class="btn-logout">Sair</a>
       </div>
     </nav>
+  
     <h3 id="boasVindas">Bem-Vindo</h3>
-    <div id="chat-wrapper">
+  
+    <!-- Mini-chat fixo fora do fluxo normal -->
+    <aside id="mini-chat">
+      <h4>Kits do Site</h4>
+      <div id="mini-messages">
+        <p><em>Sem kits carregados ainda...</em></p>
+      </div>
+    </aside>
+  
+    <!-- Chat principal centralizado -->
+    <main id="chat-container">
       <button id="fullscreenBtn" class="btn-contrast" title="Tela cheia do chat">⛶</button>
-      <main id="chat-container">
-        <div id="messages"></div>
-        <div id="input-area">
-          <input
-            type="text"
-            id="user-input"
-            placeholder="Digite sua mensagem..."
-          />
-          <button onclick="sendMessage()" class="btn-chat">Enviar</button>
-        </div>
-      </main>
-
+      <div id="messages"></div>
+      <div id="input-area">
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Digite sua mensagem..."
+        />
+        <button onclick="sendMessage()" class="btn-chat">Enviar</button>
+      </div>
+    </main>
+  
     <footer>
       <p>&copy; 2025 - Patetas</p>
       <a href="questionarioSatisfacao.html">Questionário de Satisfação</a>
     </footer>
-
+  
     <script src="index.js"></script>
   </body>
-</html>
+  
