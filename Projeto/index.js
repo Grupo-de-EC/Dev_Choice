@@ -222,4 +222,28 @@ function addMessage(text, classe) {
       console.error(error);
     }
   }
-  
+
+
+//Kit
+
+window.addEventListener('DOMContentLoaded', () => {
+  const tipo = localStorage.getItem('tipoProjeto');
+  const miniMessages = document.getElementById('mini-messages');
+
+  const kits = {
+    web: 'Kit Web: HTML, CSS, JavaScript, React, Node.js',
+    mobile: 'Kit Mobile: React Native, Flutter, Swift, Kotlin',
+    desktop: 'Kit Desktop: Electron, C#, JavaFX, Python Tkinter',
+    iot: 'Kit IoT: ESP32, Arduino, Raspberry Pi, MQTT',
+    jogo: 'Kit Jogo: Unity, Unreal Engine, Godot, Blender',
+    analise: 'Kit Análise: Python, Pandas, Jupyter, TensorFlow',
+    outros: 'Kit Diversos: Git, Docker, APIs, Metodologias Ágeis'
+  };
+
+  if (tipo && kits[tipo]) {
+    miniMessages.innerHTML = `<p><strong>${kits[tipo]}</strong></p>`;
+  } else {
+    miniMessages.innerHTML = '<p><em>Sem kits carregados ainda...</em></p>';
+  }
+});
+
