@@ -100,7 +100,7 @@ function addMessageGradualmente(text, classe) {
     i++;
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
     if (i >= text.length) clearInterval(interval);
-  }, 25); // 30ms por letra
+  }, 20); // 30ms por letra
 }
 
 window.addEventListener("DOMContentLoaded", function () {
