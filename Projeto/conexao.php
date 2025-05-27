@@ -1,29 +1,21 @@
 <?php
-function conecta_servidor() {
-    $db_name = "devs_choice";
-    $user = "root";
-    $pass = "";
-    $server = "localhost";
 
-    $conn = mysqli_connect($server, $user, $pass, $db_name, 3307);
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "devs_choice";
 
-    if (!$conn) {
-        die("Conexão falhou: " . mysqli_connect_error());
+$portas = [3306, 3307];
+$conn = null;
+
+foreach ($portas as $porta) {
+    $conn = @new mysqli($host, $user, $pass, $db, $porta);
+    if (!$conn->connect_error) {
+        break;
     }
+}
 
-    error_log("Conexão bem-sucedida!");
-    return $conn;
+if ($conn === null || $conn->connect_error) {
+    die("Erro na conexão: " . $conn->connect_error);
 }
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste de Conexão</title>
-</head>
-<body>
-    <h1>Conexão com o banco de dados</h1>
-    <p>Conexão bem-sucedida com o banco de dados!</p>
-</body>
-</html>

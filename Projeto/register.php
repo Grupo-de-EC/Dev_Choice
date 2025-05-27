@@ -1,12 +1,7 @@
 <?php
 session_start();
 
-$db_name = "devs_choice";
-    $user = "root";
-    $pass = "";
-    $server = "localhost";
-
-    $conn = mysqli_connect($server, $user, $pass, $db_name, 3307);
+require_once 'conexao.php';
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -18,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($name)) {
         die("Nome é um requisito.");
     }
-
 
     $sql = "INSERT INTO users (name) VALUES (?)";
     $stmt = $conn->prepare($sql);
