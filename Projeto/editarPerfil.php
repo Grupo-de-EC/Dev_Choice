@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     exit();
 }
 
-$conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
+require_once 'conexao.php';
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }

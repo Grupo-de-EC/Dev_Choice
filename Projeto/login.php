@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
+require_once 'conexao.php';
 
 $name = $_POST['name'];
 

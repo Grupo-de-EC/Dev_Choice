@@ -1,19 +1,22 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
+require_once 'conexao.php';
 
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-// Lista de admins com email e senha em texto puro
 $admins = [
-    ['email' => 'batatao@devschoice.com', 'senha' => 'pateta02'],
     ['email' => 'shinigami@devschoice.com', 'senha' => 'pateta01'],
+    ['email' => 'batatao@devschoice.com', 'senha' => 'pateta02'],
     ['email' => 'fantasmaretro@devschoice.com', 'senha' => 'pateta03'],
 ];
 
 $query = "UPDATE users SET password = ? WHERE email = ? AND role = 'admin'";
 $stmt = $conn->prepare($query);
+
+if (!$stmt) {
+    die("Erro na preparação da query: " . $conn->error);
+}
 
 foreach ($admins as $admin) {
     $senha_hash = password_hash($admin['senha'], PASSWORD_DEFAULT);

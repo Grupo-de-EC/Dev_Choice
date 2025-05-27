@@ -1,13 +1,13 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
+require_once 'conexao.php';
 
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
 $admins = [
-    ['email' => 'batatao@devschoice.com', 'senha' => 'pateta02'],
     ['email' => 'shinigami@devschoice.com', 'senha' => 'pateta01'],
+    ['email' => 'batatao@devschoice.com', 'senha' => 'pateta02'],
     ['email' => 'fantasmaretro@devschoice.com', 'senha' => 'pateta03'],
 ];
 

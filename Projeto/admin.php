@@ -5,7 +5,8 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     exit();
 }
 
-$conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
+require_once 'conexao.php';
+
 $graficoData = [1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0];
 
 if (!$conn->connect_error) {
@@ -15,8 +16,10 @@ if (!$conn->connect_error) {
         $estrela = (int)$row['estrelas'];
         $graficoData[$estrela] = (int)$row['quantidade'];
     }
-    $conn->close();
+} else {
+    die("Erro na conexão: " . $conn->connect_error);
 }
+
 $graficoJS = json_encode(array_values($graficoData));
 ?>
 
@@ -24,9 +27,9 @@ $graficoJS = json_encode(array_values($graficoData));
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Painel do Administrador</title>
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
   <nav class="navbar">
@@ -53,14 +56,12 @@ $graficoJS = json_encode(array_values($graficoData));
       <h2>Feedbacks dos Usuários</h2>
       <ul id="lista-feedbacks">
         <?php
-          // Conexão com o banco
-          $conn = new mysqli("localhost", "root", "", "devs_choice", 3307);
           if ($conn->connect_error) {
               echo "<li>Erro ao conectar com o banco de dados.</li>";
           } else {
               $sql = "SELECT comentario, estrelas, data_envio FROM feedbacks ORDER BY data_envio DESC LIMIT 5";
               $result = $conn->query($sql);
-              if ($result->num_rows > 0) {
+              if ($result && $result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) {
                       $estrelas = str_repeat("⭐", (int)$row['estrelas']);
                       echo "<li><strong>{$estrelas}</strong> - " . htmlspecialchars($row['comentario']) . "</li>";
@@ -68,7 +69,6 @@ $graficoJS = json_encode(array_values($graficoData));
               } else {
                   echo "<li>Nenhum feedback ainda.</li>";
               }
-              $conn->close();
           }
         ?>
       </ul>
@@ -86,8 +86,8 @@ $graficoJS = json_encode(array_values($graficoData));
 
     <section id="perfil">
       <h2>Perfil do Administrador</h2>
-      <p>Nome: <?php echo $_SESSION['name']; ?></p>
-      <p>Email: <?php echo $_SESSION['email']; ?></p>
+      <p>Nome: <?php echo htmlspecialchars($_SESSION['name']); ?></p>
+      <p>Email: <?php echo htmlspecialchars($_SESSION['email']); ?></p>
       <button onclick="editarPerfil()">Editar Perfil</button>
     </section>
   </main>
@@ -97,9 +97,14 @@ $graficoJS = json_encode(array_values($graficoData));
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  const dadosEstrelas = <?php echo $graficoJS; ?>;
-</script>
-<script src="admin.js" defer></script>
+  <script>
+    const dadosEstrelas = <?php echo $graficoJS; ?>;
+  </script>
+  <script src="admin.js" defer></script>
 </body>
 </html>
+
+<?php
+// Fechar conexão só ao final do script
+$conn->close();
+?>
