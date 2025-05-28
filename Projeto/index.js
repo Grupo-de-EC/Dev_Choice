@@ -231,19 +231,65 @@ window.addEventListener('DOMContentLoaded', () => {
   const miniMessages = document.getElementById('mini-messages');
 
   const kits = {
-    web: 'Kit Web: HTML, CSS, JavaScript, React, Node.js',
-    mobile: 'Kit Mobile: React Native, Flutter, Swift, Kotlin',
-    desktop: 'Kit Desktop: Electron, C#, JavaFX, Python Tkinter',
-    iot: 'Kit IoT: ESP32, Arduino, Raspberry Pi, MQTT',
-    jogo: 'Kit Jogo: Unity, Unreal Engine, Godot, Blender',
-    analise: 'Kit Análise: Python, Pandas, Jupyter, TensorFlow',
-    outros: 'Kit Diversos: Git, Docker, APIs, Metodologias Ágeis'
+    web: [
+      { nome: 'HTML', link: 'https://developer.mozilla.org/pt-BR/docs/Web/HTML', icone: '/Devs_Choice/imagens/html.png' },
+      { nome: 'CSS', link: 'https://developer.mozilla.org/pt-BR/docs/Web/CSS', icone: '/Devs_Choice/imagens/css.png' },
+      { nome: 'JavaScript', link: 'https://developer.mozilla.org/pt-BR/docs/Web/JavaScript', icone: '/Devs_Choice/imagens/js.png' },
+      { nome: 'React', link: 'https://reactjs.org/', icone: '/Devs_Choice/imagens/react.png' },
+      { nome: 'Node.js', link: 'https://nodejs.org/en/', icone: '/Devs_Choice/imagens/node.png' }
+    ],
+    mobile: [
+      { nome: 'React Native', link: 'https://reactnative.dev/', icone: '/Devs_Choice/imagens/react.png' },
+      { nome: 'Flutter', link: 'https://flutter.dev/', icone: '/Devs_Choice/imagens/flutter.png' },
+      { nome: 'Swift', link: 'https://developer.apple.com/swift/', icone: '/Devs_Choice/imagens/swift.png' },
+      { nome: 'Kotlin', link: 'https://kotlinlang.org/', icone: '/Devs_Choice/imagens/kotlin.png' }
+    ],
+    desktop: [
+      { nome: 'Electron', link: 'https://www.electronjs.org/', icone: '/Devs_Choice/imagens/electron.png' },
+      { nome: 'C#', link: 'https://learn.microsoft.com/dotnet/csharp/', icone: '/Devs_Choice/imagens/csharp.png' },
+      { nome: 'JavaFX', link: 'https://openjfx.io/', icone: '/Devs_Choice/imagens/java.png' },
+      { nome: 'Python Tkinter', link: 'https://docs.python.org/3/library/tkinter.html', icone: '/Devs_Choice/imagens/python.png' }
+    ],
+    iot: [
+      { nome: 'ArduinoIDE(ESP32)', link: 'https://www.espressif.com/en/products/socs/esp32', icone: '/Devs_Choice/imagens/arduino.png' },
+      { nome: 'ArduinoIDE', link: 'https://www.arduino.cc/', icone: '/Devs_Choice/imagens/arduino.png' },
+      { nome: 'Raspberry Pi', link: 'https://www.raspberrypi.org/', icone: '/Devs_Choice/imagens/raspberrypi.png' },
+      { nome: 'MQTT', link: 'https://mqtt.org/', icone: '/Devs_Choice/imagens/mqtt.png' }
+    ],
+    jogo: [
+      { nome: 'Unity', link: 'https://unity.com/', icone: '/Devs_Choice/imagens/unity.png' },
+      { nome: 'Unreal Engine', link: 'https://www.unrealengine.com/', icone: '/Devs_Choice/imagens/unreal.png' },
+      { nome: 'Godot', link: 'https://godotengine.org/', icone: '/Devs_Choice/imagens/godot.png' },
+      { nome: 'Blender', link: 'https://www.blender.org/', icone: '/Devs_Choice/imagens/blender.png' }
+    ],
+    analise: [
+      { nome: 'Python', link: 'https://www.python.org/', icone: '/Devs_Choice/imagens/python.png' },
+      { nome: 'Pandas', link: 'https://pandas.pydata.org/', icone: '/Devs_Choice/imagens/pandas.png' },
+      { nome: 'Jupyter', link: 'https://jupyter.org/', icone: '/Devs_Choice/imagens/jupyter.png' },
+      { nome: 'TensorFlow', link: 'https://www.tensorflow.org/', icone: '/Devs_Choice/imagens/tensorflow.png' } 
+    ],
+    outros: [
+      { nome: 'Git', link: 'https://git-scm.com/', icone: '/Devs_Choice/imagens/git.png' },
+      { nome: 'Docker', link: 'https://www.docker.com/', icone: '/Devs_Choice/imagens/docker.png' },
+      { nome: 'APIs', link: 'https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Client-side_web_APIs/Introduction', icone: '/Devs_Choice/imagens/apis.png' },
+      { nome: 'GitHub', link: 'https://github.com/', icone: '/Devs_Choice/imagens/github.png' }
+    ]
   };
 
   if (tipo && kits[tipo]) {
-    miniMessages.innerHTML = `<p><strong>${kits[tipo]}</strong></p>`;
+    const itens = kits[tipo];
+    const listaLinks = itens.map(item => 
+      `<li><img src="${item.icone}" width="32" height="32" alt="${item.nome}"> 
+      <a href="${item.link}" target="_blank">${item.nome}</a></li>`
+    ).join('');
+
+    miniMessages.innerHTML = `
+      <p><strong>Kit ${tipo.charAt(0).toUpperCase() + tipo.slice(1)}:</strong></p>
+      <ul>${listaLinks}</ul>
+    `;
   } else {
     miniMessages.innerHTML = '<p><em>Sem kits carregados ainda...</em></p>';
   }
 });
+
 
