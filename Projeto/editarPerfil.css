@@ -1,48 +1,40 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
-  
-  /* Corpo da página */
   body {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradiente de fundo */
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     backdrop-filter: blur(4px);
   }
-  
-  /* Contêiner do formulário */
   .form-container {
-    background: rgba(15, 23, 42, 0.9); /* Fundo escuro com transparência */
+    background: rgba(15, 23, 42, 0.9);
     padding: 30px 25px;
     border-radius: 16px;
     color: #fff;
     width: 90%;
     max-width: 420px;
     text-align: center;
-    animation: fadeIn 0.8s ease-in-out; /* Animação suave de entrada */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra suave */
+    animation: fadeIn 0.8s ease-in-out; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   }
-  
-  /* Título do formulário */
+
   h2 {
     font-size: 26px;
     margin-bottom: 10px;
   }
-  
-  /* Parágrafo do formulário */
+
   p {
     font-size: 16px;
     margin-bottom: 20px;
-    color: #d1d5db; /* Cor clara para o texto */
+    color: #d1d5db;
   }
   
-  /* Estilo dos campos de input, select e botões */
   select,
   input,
   button {
@@ -52,27 +44,24 @@
     border: none;
     border-radius: 8px;
     font-size: 15px;
-    transition: 0.3s ease; /* Transição suave para interações */
+    transition: 0.3s ease;
   }
   
-  /* Estilo dos inputs e selects */
   select,
   input {
     background: #1e293b;
-    color: #e2e8f0; /* Cor do texto clara */
+    color: #e2e8f0; 
   }
-  
-  /* Foco nos campos de input e select */
+
   select:focus,
   input:focus {
     outline: none;
     background: #334155;
-    box-shadow: 0 0 0 2px #3b82f6; /* Destaque azul no foco */
+    box-shadow: 0 0 0 2px #3b82f6;
   }
   
-  /* Estilo do botão */
   button {
-    background: linear-gradient(135deg, #3b82f6, #2563eb); /* Gradiente de fundo */
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
     color: white;
     cursor: pointer;
     font-weight: 600;
@@ -80,11 +69,10 @@
   }
   
   button:hover {
-    background: linear-gradient(135deg, #2563eb, #1e40af); /* Efeito de hover no botão */
-    transform: scale(1.02); /* Aumenta o tamanho ao passar o mouse */
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    transform: scale(1.02);
   }
   
-  /* Animação de fade-in para a entrada do formulário */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -96,7 +84,6 @@
     }
   }
   
-  /* Responsividade */
   @media (max-width: 400px) {
     .form-container {
       width: 90%;
