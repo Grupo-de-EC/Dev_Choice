@@ -35,7 +35,7 @@ $conn->close();
 <body>
   <div class="form-container">
     <h2>Responda o formulário abaixo</h2>
-    <form id="devForm" method="POST" action="salvar_respostas.php">
+    <form id="devForm">
       <?php foreach ($perguntas as $pid => $pergunta): ?>
         <fieldset>
           <legend><?= htmlspecialchars($pergunta['texto']) ?></legend>
@@ -47,7 +47,7 @@ $conn->close();
             <div class="options-container">
               <?php foreach ($pergunta['opcoes'] as $oid => $opcao): ?>
                 <label class="option-label">
-                  <input type="radio" name="resposta[<?= $pid ?>]" value="<?= htmlspecialchars($oid) ?>" required>
+                  <input type="radio" name="resposta[<?= $pid ?>]" value="<?= htmlspecialchars($opcao) ?>" required>
                   <?= htmlspecialchars($opcao) ?>
                 </label>
               <?php endforeach; ?>
@@ -57,7 +57,7 @@ $conn->close();
             <div class="options-container">
               <?php foreach ($pergunta['opcoes'] as $oid => $opcao): ?>
                 <label class="option-label">
-                  <input type="checkbox" name="resposta[<?= $pid ?>][]" value="<?= htmlspecialchars($oid) ?>">
+                  <input type="checkbox" name="resposta[<?= $pid ?>][]" value="<?= htmlspecialchars($opcao) ?>">
                   <?= htmlspecialchars($opcao) ?>
                 </label>
               <?php endforeach; ?>
@@ -71,6 +71,59 @@ $conn->close();
       <button type="submit">Enviar</button>
     </form>
   </div>
-<script src="formulario.js"></script>
+
+<script>
+  document.getElementById('devForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const respostas = {};
+    const form = e.target;
+
+    for (const fieldset of form.querySelectorAll('fieldset')) {
+      const legend = fieldset.querySelector('legend').innerText;
+      const inputs = fieldset.querySelectorAll('input');
+      let respostaPergunta = null;
+
+      if (inputs[0].type === 'text') {
+        const val = inputs[0].value.trim();
+        if (!val) {
+          alert(`Por favor, responda a pergunta: "${legend}"`);
+          return;
+        }
+        respostaPergunta = val;
+
+      } else if (inputs[0].type === 'radio') {
+        respostaPergunta = null;
+        inputs.forEach(input => {
+          if(input.checked) respostaPergunta = input.value;
+        });
+        if (!respostaPergunta) {
+          alert(`Por favor, responda a pergunta: "${legend}"`);
+          return;
+        }
+
+      } else if (inputs[0].type === 'checkbox') {
+        respostaPergunta = [];
+        inputs.forEach(input => {
+          if(input.checked) respostaPergunta.push(input.value);
+        });
+        if (respostaPergunta.length === 0) {
+          alert(`Por favor, responda a pergunta: "${legend}"`);
+          return;
+        }
+      }
+
+      respostas[legend] = respostaPergunta;
+    }
+
+    // Salvar respostas e nome no localStorage
+    const nomeUsuario = localStorage.getItem('nomeUsuario') || 'Anônimo';
+    localStorage.setItem('respostas_' + nomeUsuario, JSON.stringify(respostas));
+    
+    alert('Respostas salvas localmente!');
+    // Redirecionar para index (ou onde quiser)
+    window.location.href = 'index.php';
+  });
+</script>
 </body>
 </html>

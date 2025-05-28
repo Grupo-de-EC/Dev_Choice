@@ -20,19 +20,29 @@ document
     }
   });
 
-window.addEventListener("DOMContentLoaded", function () {
-  const nome = localStorage.getItem("nomeUsuario"); 
-  const projeto = localStorage.getItem("tipoProjeto");
-  const boasVindas = document.getElementById("boasVindas");
+  /////////////////////////
+  window.addEventListener("DOMContentLoaded", function () {
+    const nome = localStorage.getItem("nomeUsuario");
+    const projeto = localStorage.getItem("tipoProjeto");
+    const boasVindas = document.getElementById("boasVindas");
 
-  if (nome && projeto) {
-    boasVindas.innerHTML = `Bem-vindo, ${nome}<br>Seu projeto é: ${projeto}!`;
-  } else if (nome) {
-    boasVindas.textContent = `Bem-vindo, ${nome}!`;
-  } else if (projeto) {
-    boasVindas.innerHTML = `Bem-vindo ao projeto <span>${projeto}</span>!`;
-  }
-});
+    boasVindas.innerHTML = '';
+
+    if (nome) {
+      const nomeUsuarioEl = document.createElement('div');
+      nomeUsuarioEl.textContent = `Bem-vindo, ${nome}!`;
+      boasVindas.appendChild(nomeUsuarioEl);
+    }
+
+    if (projeto) {
+      const projetoEl = document.createElement('div');
+      projetoEl.textContent = `Seu projeto é: ${projeto}`;
+      projetoEl.style.marginTop = '4px';
+      projetoEl.style.fontWeight = 'bold';
+      boasVindas.appendChild(projetoEl);
+    }
+  });
+  
 
 //Botão Tela Cheia Do Chat
 

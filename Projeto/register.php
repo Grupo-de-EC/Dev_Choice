@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("s", $name);
 
         if ($stmt->execute()) {
-            header("Location: formulario.html");
+            header("Location: formulario.php");
             exit();
         } else {
             echo "Erro durante o registro: " . $stmt->error;

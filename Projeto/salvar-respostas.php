@@ -21,5 +21,6 @@ foreach ($respostas as $pergunta_id => $resposta) {
     }
 }
 $conn->close();
+header("Location: index.html");
 exit();
 ?>
