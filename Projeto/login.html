@@ -12,17 +12,24 @@
             <button>Login para Administrador</button>
         </a>
     </div>
+
     <div class="login-container">
         <h2>Dev's Choice</h2>
         <form id="loginForm" method="POST" action="register.php">
             <input type="text" name="name" placeholder="Seu Nome:" required id="username">
+
+            <!-- reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="6LeRLU0rAAAAAFaurGLkjnsdolroXd5OfGF4Do2d"></div>
+
             <button type="submit">Entrar</button>
         </form>
-            <div class="input-group">
-                <a href="formulario.php">
-                </a>
-            </div>
+
+        <div class="input-group">
+            <a href="formulario.php"></a>
+        </div>
     </div>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="login.js"></script>
 </body>
 </html>
