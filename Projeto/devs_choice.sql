@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2025 at 10:17 PM
+-- Generation Time: May 29, 2025 at 01:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -118,13 +118,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `role`, `email`) VALUES
-(9, 'Mason Greenwood', '', 'user', NULL),
-(10, 'Adm01', '$2y$10$3W08gg4VM6Nd1abkzcp1UeXLn4IH44HbuAQXgcL0xJuX6JeyxtIhm', 'admin', 'shinigami@devschoice.com'),
-(11, 'Adm02', '$2y$10$PG9U6ftvTtPcnfie.cF/1evSrmX6x17G6AdHgNbIyjLFztBZbRl66', 'admin', 'batatao@devschoice.com'),
-(16, 'Adm03', '$2y$10$tdkyV6cDZpMfQ/MW3FNBFuG89Dqh4tJsm.fKgLk.2fI5cAkRpoy8q', 'admin', 'fantasmaretro@devschoice.com'),
-(19, 'Matheus Becchi', '', 'user', NULL),
-(20, 'Lucas Salomão', '', 'user', NULL),
-(21, 'João Vitor', '', 'user', NULL),
+(1, 'Adm01', '$2y$10$3W08gg4VM6Nd1abkzcp1UeXLn4IH44HbuAQXgcL0xJuX6JeyxtIhm', 'admin', 'shinigami@devschoice.com'),
+(2, 'Adm02', '$2y$10$PG9U6ftvTtPcnfie.cF/1evSrmX6x17G6AdHgNbIyjLFztBZbRl66', 'admin', 'batatao@devschoice.com'),
+(3, 'Adm03', '$2y$10$tdkyV6cDZpMfQ/MW3FNBFuG89Dqh4tJsm.fKgLk.2fI5cAkRpoy8q', 'admin', 'fantasmaretro@devschoice.com'),
+(6, 'Mason Greenwood', '', 'user', NULL),
+(7, 'João Vitor de Moraes Bringmann', '', 'user', NULL),
+(8, 'Lucas Salomão Boschiroli', '', 'user', NULL),
+(9, 'Matheus Becchi Arruda', '', 'user', NULL);
 
 -- --------------------------------------------------------
 
@@ -213,7 +213,7 @@ ALTER TABLE `perguntas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
