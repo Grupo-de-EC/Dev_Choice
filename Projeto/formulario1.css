@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    backdrop-filter: blur(4px);
+    padding: 20px; /* para mobile */
+}
+
+.form-container {
+    background: rgba(15, 23, 42, 0.9);
+    padding: 30px 25px;
+    border-radius: 16px;
+    color: #fff;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #d1d5db;
+}
+
+/* Inputs simples (text, select, button) */
+select, input[type="text"], button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+
+select, input[type="text"] {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+select:focus, input[type="text"]:focus {
+    outline: none;
+    background: #334155;
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+button {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    transform: scale(1.02);
+}
+
+/* Fieldset e legend para perguntas (formulario.php) */
+fieldset {
+    border: 1px solid #334155;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px 20px 20px 20px;
+    color: #cbd5e1; /* cor clara */
+    text-align: left;
+}
+
+legend {
+    font-weight: 600;
+    padding: 0 10px;
+    color: #3b82f6;
+    font-size: 16px;
+}
+
+/* Container das opções */
+.options-container {
+    margin-top: 10px;
+}
+
+/* Labels das opções radio/checkbox */
+.option-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #e2e8f0;
+    user-select: none;
+}
+
+/* Inputs radio e checkbox nas opções */
+.option-label input[type="radio"],
+.option-label input[type="checkbox"] {
+    margin-right: 12px;
+    accent-color: #3b82f6;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Input texto dentro do fieldset (formulario.php) */
+fieldset input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+
+fieldset input[type="text"]:focus {
+    outline: none;
+    background: #334155;
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+/* Animação fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 400px) {
+    .form-container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}

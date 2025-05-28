@@ -84,7 +84,7 @@ button:hover {
 
 /*Responsividade*/
 @media (max-width: 400px) {
-    .login-container {
+    .form-container {
         width: 90%;
         padding: 20px;
     }
@@ -98,3 +98,38 @@ button:hover {
         font-size: 22px;
     }
   }
+
+  fieldset {
+    border: 1px solid #334155;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    color: #cbd5e1; /* cor clara para o texto */
+  }
+  
+  legend {
+    font-weight: 600;
+    padding: 0 10px;
+    color: #3b82f6; /* destaque azul */
+  }
+  
+  .options-container {
+    margin-top: 10px;
+    text-align: left;
+  }
+  
+  .option-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #e2e8f0;
+  }
+  
+  .option-label input[type="radio"],
+  .option-label input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #3b82f6; /* azul no input (chrome/firefox) */
+  }
+  
