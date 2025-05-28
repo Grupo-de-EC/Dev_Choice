@@ -60,6 +60,15 @@ async function sendMessage() {
   addMessage("Você: " + message, "user");
   input.value = "";
 
+  // Adiciona o indicador de "Digitando..."
+  const messagesDiv = document.getElementById("messages");
+  const typingDiv = document.createElement("div");
+  typingDiv.className = "bot";
+  typingDiv.id = "typingIndicator";
+  typingDiv.textContent = "Quantika está pensando...";
+  messagesDiv.appendChild(typingDiv);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
   try {
     const resposta = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
@@ -80,8 +89,15 @@ async function sendMessage() {
 
     const dados = await resposta.json();
     const respostaIA = dados.choices[0].message.content;
+
+    // Remove o "Digitando..."
+    typingDiv.remove();
+
+    // Mostra a resposta da Quantika com animação gradual e formatação
     addMessageGradualmente("Quantika: " + respostaIA, "bot");
+
   } catch (error) {
+    typingDiv.remove(); // Remove mesmo que dê erro
     addMessage("Erro ao conectar com a IA.", "bot");
     console.error(error);
   }
@@ -94,13 +110,20 @@ function addMessageGradualmente(text, classe) {
   messagesDiv.appendChild(div);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
+  // Formatar texto: quebra de linha e listas
+  const formattedText = text
+    .replace(/\n/g, '<br>')                 // Quebra de linha
+    .replace(/(\d+)\.\s/g, '<br>$1. ')     // Lista numerada
+    .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')// Negrito (opcional)
+    .replace(/\*(.*?)\*/g, '<i>$1</i>');   // Itálico (opcional)
+
   let i = 0;
   const interval = setInterval(() => {
-    div.textContent += text.charAt(i);
+    div.innerHTML += formattedText.charAt(i);
     i++;
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    if (i >= text.length) clearInterval(interval);
-  }, 20); // 30ms por letra
+    if (i >= formattedText.length) clearInterval(interval);
+  }, 20); // 20ms por letra
 }
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -127,50 +150,58 @@ function addMessage(text, classe) {
   const messagesDiv = document.getElementById("messages");
   const div = document.createElement("div");
   div.className = classe;
-  div.textContent = text;
+
+  // Formatar texto: quebra de linha e listas
+  const formattedText = text
+    .replace(/\n/g, '<br>')                 // Quebra de linha
+    .replace(/(\d+)\.\s/g, '<br>$1. ')     // Lista numerada
+    .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')// Negrito (opcional)
+    .replace(/\*(.*?)\*/g, '<i>$1</i>');   // Itálico (opcional)
+
+  div.innerHTML = formattedText;
   messagesDiv.appendChild(div);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-  const experiencia = localStorage.getItem("experienciaUsuario");
-  const tipoProjeto = localStorage.getItem("tipoProjeto");
-  const objetivo = localStorage.getItem("objetivoProjeto");
+const experiencia = localStorage.getItem("experienciaUsuario");
+const tipoProjeto = localStorage.getItem("tipoProjeto");
+const objetivo = localStorage.getItem("objetivoProjeto");
 
-  if (experiencia && tipoProjeto && objetivo) {
-    const mensagemInicial = `O usuario de nível ${experiencia} escolheu ${tipoProjeto} e ele quer que o site faça ${objetivo}.`;
+if (experiencia && tipoProjeto && objetivo) {
+  const mensagemInicial = `O usuario de nível ${experiencia} escolheu ${tipoProjeto} e ele quer que o site faça ${objetivo}.`;
 
-    fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + apiKey,
-        "HTTP-Referer": "http://localhost/Devs_Choice/Projeto/index.html",
-        "X-Title": "Dev's Choice",
-      },
-      body: JSON.stringify({
-        model: "openai/gpt-3.5-turbo",
-        messages: [{ role: "user", content: mensagemInicial }],
-      }),
-    })
-    .then((res) => res.json())
-    .then((dados) => {
-      const respostaIA = dados.choices[0].message.content;
-      addMessage("Quantika: " + respostaIA, "bot");
-    })
-    .catch((err) => {
-      addMessage("Erro ao conectar com a IA.", "bot");
-      console.error(err);
-    });
+  fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + apiKey,
+      "HTTP-Referer": "http://localhost/Devs_Choice/Projeto/index.html",
+      "X-Title": "Dev's Choice",
+    },
+    body: JSON.stringify({
+      model: "openai/gpt-3.5-turbo",
+      messages: [{ role: "user", content: mensagemInicial }],
+    }),
+  })
+  .then((res) => res.json())
+  .then((dados) => {
+    const respostaIA = dados.choices[0].message.content;
+    addMessage("Quantika: " + respostaIA, "bot");
+  })
+  .catch((err) => {
+    addMessage("Erro ao conectar com a IA.", "bot");
+    console.error(err);
+  });
 
-    localStorage.removeItem("experienciaUsuario");
-    localStorage.removeItem("objetivoProjeto");
-  }
+  localStorage.removeItem("experienciaUsuario");
+  localStorage.removeItem("objetivoProjeto");
+}
 
-  history.pushState(null, null, location.href);
-  window.onpopstate = function () {
-    history.go(1);
-    alert("Não é possível voltar para a página anterior. Faça login novamente.");
-  };
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+  history.go(1);
+  alert("Não é possível voltar para a página anterior. Faça login novamente.");
+};
 
   async function sendMessage() {
     const input = document.getElementById("user-input");
