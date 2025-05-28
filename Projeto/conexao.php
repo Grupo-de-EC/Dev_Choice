@@ -5,7 +5,7 @@ $user = "root";
 $pass = "";
 $db   = "devs_choice";
 
-$portas = [3306, 3307];
+$portas = [3307];
 $conn = null;
 
 foreach ($portas as $porta) {

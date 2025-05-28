@@ -47,6 +47,14 @@ $graficoJS = json_encode(array_values($graficoData));
   </nav>
 
   <main class="container">
+
+  <section id="perfil">
+      <h2>Perfil do Administrador</h2>
+      <p>Nome: <?php echo htmlspecialchars($_SESSION['name']); ?></p>
+      <p>Email: <?php echo htmlspecialchars($_SESSION['email']); ?></p>
+      <button onclick="editarPerfil()">Editar Perfil</button>
+    </section>
+    
     <section id="questionarios">
       <h2>Gerenciar Questionários</h2>
       <button onclick="editarQuestionario()">Editar Questionários</button>
@@ -84,12 +92,7 @@ $graficoJS = json_encode(array_values($graficoData));
       <canvas id="graficoSatisfacao" width="600" height="300"></canvas>
     </section>
 
-    <section id="perfil">
-      <h2>Perfil do Administrador</h2>
-      <p>Nome: <?php echo htmlspecialchars($_SESSION['name']); ?></p>
-      <p>Email: <?php echo htmlspecialchars($_SESSION['email']); ?></p>
-      <button onclick="editarPerfil()">Editar Perfil</button>
-    </section>
+   
   </main>
 
   <footer>
