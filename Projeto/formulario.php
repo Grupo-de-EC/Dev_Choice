@@ -23,6 +23,19 @@ if ($result) {
         }
     }
 }
+
+// Mapeamento de IDs das opções da pergunta 2 para nomes de kits
+$mapa_opcoes_pergunta2 = [
+  1 => 'web',
+  2 => 'mobile',
+  3 => 'desktop',
+  4 => 'iot',
+  5 => 'jogo',
+  6 => 'analise',
+  7 => 'outros'
+];
+
+
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -47,7 +60,10 @@ $conn->close();
             <div class="options-container">
               <?php foreach ($pergunta['opcoes'] as $oid => $opcao): ?>
                 <label class="option-label">
-                  <input type="radio" name="resposta[<?= $pid ?>]" value="<?= htmlspecialchars($opcao) ?>" required>
+                <?php $inputName = ($pid == 2) ? 'web' : $pid;
+                ?>
+                <input type="radio" name="resposta[<?= $inputName ?>]" value="<?= htmlspecialchars($opcao) ?>" required>
+
                   <?= htmlspecialchars($opcao) ?>
                 </label>
               <?php endforeach; ?>
@@ -115,13 +131,10 @@ $conn->close();
 
       respostas[legend] = respostaPergunta;
     }
-
-    // Salvar respostas e nome no localStorage
     const nomeUsuario = localStorage.getItem('nomeUsuario') || 'Anônimo';
     localStorage.setItem('respostas_' + nomeUsuario, JSON.stringify(respostas));
     
     alert('Respostas salvas localmente!');
-    // Redirecionar para index (ou onde quiser)
     window.location.href = 'index.php';
   });
 </script>
