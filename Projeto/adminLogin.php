@@ -35,6 +35,22 @@ if ($admin) {
         echo "Senha incorreta!";
     }
 } else {
-    echo "Usuário não encontrado!";
+    ?>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Erro no Login</title>
+        <link rel="stylesheet" href="adminLogin.css"> 
+    </head>
+    <body>
+     <div class="login-container">
+        <h2>Erro no Login</h2>
+        <div class="error-message">Usuário não encontrado!</div>
+        <a href="adminLogin.php" class="btn-voltar">Voltar ao Login</a>
+     </div>
+    </body>
+    </html>
+    <?php
 }
-?>
+
