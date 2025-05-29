@@ -1,6 +1,17 @@
 <?php
 require_once 'conexao.php';
 
+// Mapeamento dos IDs das opções da pergunta 2 para os nomes dos kits
+$mapa_opcoes_pergunta2 = [
+    1 => 'web',
+    2 => 'mobile',
+    3 => 'desktop',
+    4 => 'iot',
+    5 => 'jogo',
+    6 => 'analise',
+    7 => 'outros'
+];
+
 $perguntas = [];
 $sql = "SELECT p.id, p.texto AS pergunta_texto, p.tipo, o.id AS opcao_id, o.texto AS opcao_texto
         FROM perguntas p
@@ -23,19 +34,6 @@ if ($result) {
         }
     }
 }
-
-// Mapeamento de IDs das opções da pergunta 2 para nomes de kits
-$mapa_opcoes_pergunta2 = [
-  1 => 'web',
-  2 => 'mobile',
-  3 => 'desktop',
-  4 => 'iot',
-  5 => 'jogo',
-  6 => 'analise',
-  7 => 'outros'
-];
-
-
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -55,15 +53,20 @@ $conn->close();
 
           <?php if ($pergunta['tipo'] === 'texto'): ?>
             <input type="text" name="resposta[<?= $pid ?>]" required>
-          
+
           <?php elseif ($pergunta['tipo'] === 'unica_escolha'): ?>
             <div class="options-container">
               <?php foreach ($pergunta['opcoes'] as $oid => $opcao): ?>
-                <label class="option-label">
-                <?php $inputName = ($pid == 2) ? 'web' : $pid;
+                <?php
+                  // Para a pergunta 2, usar o nome do kit como nome do campo
+                  if ($pid == 2 && isset($mapa_opcoes_pergunta2[$oid])) {
+                      $inputName = $mapa_opcoes_pergunta2[$oid];
+                  } else {
+                      $inputName = $pid;
+                  }
                 ?>
-                <input type="radio" name="resposta[<?= $inputName ?>]" value="<?= htmlspecialchars($opcao) ?>" required>
-
+                <label class="option-label">
+                  <input type="radio" name="resposta[<?= $inputName ?>]" value="<?= htmlspecialchars($opcao) ?>" required>
                   <?= htmlspecialchars($opcao) ?>
                 </label>
               <?php endforeach; ?>
@@ -96,44 +99,52 @@ $conn->close();
     const form = e.target;
 
     for (const fieldset of form.querySelectorAll('fieldset')) {
-      const legend = fieldset.querySelector('legend').innerText;
       const inputs = fieldset.querySelectorAll('input');
       let respostaPergunta = null;
 
-      if (inputs[0].type === 'text') {
-        const val = inputs[0].value.trim();
+      if (inputs.length === 0) continue;
+
+      const firstInput = inputs[0];
+      const inputNameMatch = firstInput.name.match(/resposta\[(.+?)\]/);
+      const nomeCampo = inputNameMatch ? inputNameMatch[1] : null;
+
+      if (!nomeCampo) continue;
+
+      if (firstInput.type === 'text') {
+        const val = firstInput.value.trim();
         if (!val) {
-          alert(`Por favor, responda a pergunta: "${legend}"`);
+          alert(`Por favor, responda todas as perguntas.`);
           return;
         }
         respostaPergunta = val;
 
-      } else if (inputs[0].type === 'radio') {
+      } else if (firstInput.type === 'radio') {
         respostaPergunta = null;
         inputs.forEach(input => {
-          if(input.checked) respostaPergunta = input.value;
+          if (input.checked) respostaPergunta = input.value;
         });
         if (!respostaPergunta) {
-          alert(`Por favor, responda a pergunta: "${legend}"`);
+          alert(`Por favor, selecione uma opção.`);
           return;
         }
 
-      } else if (inputs[0].type === 'checkbox') {
+      } else if (firstInput.type === 'checkbox') {
         respostaPergunta = [];
         inputs.forEach(input => {
-          if(input.checked) respostaPergunta.push(input.value);
+          if (input.checked) respostaPergunta.push(input.value);
         });
         if (respostaPergunta.length === 0) {
-          alert(`Por favor, responda a pergunta: "${legend}"`);
+          alert(`Por favor, selecione pelo menos uma opção.`);
           return;
         }
       }
 
-      respostas[legend] = respostaPergunta;
+      respostas[nomeCampo] = respostaPergunta;
     }
+
     const nomeUsuario = localStorage.getItem('nomeUsuario') || 'Anônimo';
     localStorage.setItem('respostas_' + nomeUsuario, JSON.stringify(respostas));
-    
+
     alert('Respostas salvas localmente!');
     window.location.href = 'index.php';
   });
