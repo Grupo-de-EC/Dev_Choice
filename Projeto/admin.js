@@ -1,5 +1,5 @@
 function editarQuestionario() {
-    alert("Função para editar questionários ainda será implementada.");
+    window.location.href = "adicionar_perguntas.php";
 }
   
 function editarPerfil() {

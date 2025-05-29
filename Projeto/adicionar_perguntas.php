@@ -1,6 +1,9 @@
 <?php
 require_once 'conexao.php';
 
+$mensagem = "";
+$redirecionar = false;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $texto = trim($_POST['texto'] ?? '');
     $tipo = $_POST['tipo'] ?? '';
@@ -15,8 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute()) {
         $pergunta_id = $stmt->insert_id;
 
-        // Se for tipo seleção, adiciona as opções
-        if ($tipo === 'selecao' && !empty($_POST['opcoes'])) {
+        if (in_array($tipo, ['multipla_escolha', 'unica_escolha']) && !empty($_POST['opcoes'])) {
             $opcoes = explode("\n", trim($_POST['opcoes']));
             $stmt_opcao = $conn->prepare("INSERT INTO opcoes (pergunta_id, texto) VALUES (?, ?)");
 
@@ -30,13 +32,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt_opcao->close();
         }
 
-        echo "Pergunta adicionada com sucesso!<br><a href='adicionar_pergunta.html'>Adicionar outra</a>";
     } else {
         echo "Erro: " . $stmt->error;
     }
 
     $stmt->close();
     $conn->close();
-} else {
-    echo "Método inválido.";
+    $mensagem = "Dados alterados com sucesso! Redirecionando...";
+    $redirecionar = true;
 }
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Adicionar Pergunta</title>
+  <link rel="stylesheet" href="adicionar-perguntas.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Adicionar Nova Pergunta</h1>
+    <?php if ($mensagem): ?>
+        <p style="color: lime; font-weight: bold;"><?= $mensagem ?></p>
+    <?php endif; ?>
+
+    <form method="POST" action="">
+      <label for="texto">Texto da pergunta:</label>
+      <input type="text" name="texto" id="texto" required>
+
+      <label for="tipo">Tipo da pergunta:</label>
+      <select name="tipo" id="tipo" required onchange="toggleOpcoes(this.value)">
+        <option value="" disabled selected hidden>Selecione...</option>
+        <option value="texto">Resposta livre</option>
+        <option value="multipla_escolha">Seleção (múltipla escolha)</option>
+        <option value="unica_escolha">Seleção (única escolha)</option>
+      </select>
+
+
+      <div id="opcoes-container" style="display: none;">
+        <label>Opções (uma por linha):</label>
+        <textarea name="opcoes" rows="5" placeholder="Digite cada opção em uma linha"></textarea>
+      </div>
+
+      <button type="submit">Salvar Pergunta</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleOpcoes(tipo) {
+        const tiposComOpcoes = ['multipla_escolha', 'unica_escolha'];
+        document.getElementById('opcoes-container').style.display = tiposComOpcoes.includes(tipo) ? 'block' : 'none';
+    }
+  </script>
+
+    <?php if ($redirecionar): ?>
+        <script>
+            setTimeout(() => {
+                window.location.href = "admin.php";
+            }, 3000); // 3 segundos
+        </script>
+    <?php endif; ?>
+</body>
+</html>
