@@ -26,7 +26,7 @@ document
     const projeto = localStorage.getItem("tipoProjeto");
     const boasVindas = document.getElementById("boasVindas");
 
-    boasVindas.innerHTML = '';
+    boasVindas.innerHTML = '';  // Limpa antes de adicionar
 
     if (nome) {
       const nomeUsuarioEl = document.createElement('div');
@@ -35,14 +35,15 @@ document
     }
 
     if (projeto) {
-      const projetoEl = document.createElement('div');
-      projetoEl.textContent = `Seu projeto é: ${projeto}`;
+      const nomeProjeto = localStorage.getItem('nomeProjeto');
+      const projetoEl = document.createElement('div'); // <=== crie o elemento
+      projetoEl.textContent = `Seu projeto é: ${nomeProjeto}`;
       projetoEl.style.marginTop = '4px';
       projetoEl.style.fontWeight = 'bold';
       boasVindas.appendChild(projetoEl);
     }
-  });
-  
+});
+
 
 //Botão Tela Cheia Do Chat
 
@@ -100,10 +101,10 @@ async function sendMessage() {
     const dados = await resposta.json();
     const respostaIA = dados.choices[0].message.content;
 
-    // Remove o "Digitando..."
+    // Remove o "Digitando..." antes de mostrar a resposta
     typingDiv.remove();
 
-    // Mostra a resposta da Quantika com animação gradual e formatação
+    // Mostra a resposta da Quantika com animação gradual
     addMessageGradualmente("Quantika: " + respostaIA, "bot");
 
   } catch (error) {
@@ -120,36 +121,25 @@ function addMessageGradualmente(text, classe) {
   messagesDiv.appendChild(div);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
-  // Formatar texto: quebra de linha e listas
-  const formattedText = text
-    .replace(/\n/g, '<br>')                 // Quebra de linha
-    .replace(/(\d+)\.\s/g, '<br>$1. ')     // Lista numerada
-    .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')// Negrito (opcional)
-    .replace(/\*(.*?)\*/g, '<i>$1</i>');   // Itálico (opcional)
-
   let i = 0;
+
   const interval = setInterval(() => {
-    div.innerHTML += formattedText.charAt(i);
+    const char = text.charAt(i);
+
+    if (char === '\n') {
+      div.innerHTML += '<br>';
+    } else {
+      // Para evitar problemas com tags HTML, você pode escapar caracteres especiais se precisar.
+      div.innerHTML += char;
+    }
+
     i++;
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    if (i >= formattedText.length) clearInterval(interval);
-  }, 20); // 20ms por letra
+    if (i >= text.length) clearInterval(interval);
+  }, 20);
 }
 
 window.addEventListener("DOMContentLoaded", function () {
-  const nome = localStorage.getItem("nomeUsuario");
-  const nomeProjeto = localStorage.getItem("nomeProjeto");
-  const projeto = localStorage.getItem("tipoProjeto");
-  const boasVindas = document.getElementById("boasVindas");
-
-  if (nome && nomeProjeto) {
-    boasVindas.innerHTML = `Bem-vindo, ${nome}<br>Seu projeto é: ${nomeProjeto}!`;
-  } else if (nome) {
-    boasVindas.textContent = `Bem-vindo, ${nome}!`;
-  } else if (nomeProjeto) {
-    boasVindas.innerHTML = `Bem-vindo ao projeto <span>${nomeProjeto}</span>!`;
-  }
-
   addMessage(
     "Olá! 👋 Eu sou a Quantika, sua assistente virtual. Estou aqui para te ajudar com dúvidas sobre programação, nesse exato momento estou analisando seu formulário, então peço que aguarde um pouco.",
     "bot"
@@ -161,7 +151,7 @@ function addMessage(text, classe) {
   const div = document.createElement("div");
   div.className = classe;
 
-  // Formatar texto: quebra de linha e listas
+  // Formatar texto: quebra de linha e listas simples
   const formattedText = text
     .replace(/\n/g, '<br>')                 // Quebra de linha
     .replace(/(\d+)\.\s/g, '<br>$1. ')     // Lista numerada
@@ -171,47 +161,83 @@ function addMessage(text, classe) {
   div.innerHTML = formattedText;
   messagesDiv.appendChild(div);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
-}
+};
 
-const experiencia = localStorage.getItem("experienciaUsuario");
-const tipoProjeto = localStorage.getItem("tipoProjeto");
-const objetivo = localStorage.getItem("objetivoProjeto");
+window.addEventListener("DOMContentLoaded", function () {
+  // Nova parte para pegar as respostas salvas no localStorage e enviar para IA
+  const nomeUsuario = localStorage.getItem('nomeUsuario') || 'Anônimo';
+  const respostasJSON = localStorage.getItem('respostas_' + nomeUsuario);
 
-if (experiencia && tipoProjeto && objetivo) {
-  const mensagemInicial = `O usuario de nível ${experiencia} escolheu ${tipoProjeto} e ele quer que o site faça ${objetivo}.`;
+  if (respostasJSON) {
+    const respostas = JSON.parse(respostasJSON);
+    let mensagemParaIA = "O usuário respondeu ao formulário com os seguintes dados:\n";
 
-  fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + apiKey,
-      "HTTP-Referer": "http://localhost/Devs_Choice/Projeto/index.html",
-      "X-Title": "Dev's Choice",
-    },
-    body: JSON.stringify({
-      model: "openai/gpt-3.5-turbo",
-      messages: [{ role: "user", content: mensagemInicial }],
-    }),
-  })
-  .then((res) => res.json())
-  .then((dados) => {
-    const respostaIA = dados.choices[0].message.content;
-    addMessage("Quantika: " + respostaIA, "bot");
-  })
-  .catch((err) => {
-    addMessage("Erro ao conectar com a IA.", "bot");
-    console.error(err);
-  });
+    for (const [perguntaId, resposta] of Object.entries(respostas)) {
+      mensagemParaIA += `Pergunta ${perguntaId}: `;
+      if (Array.isArray(resposta)) {
+        mensagemParaIA += resposta.join(", ");
+      } else {
+        mensagemParaIA += resposta;
+      }
+      mensagemParaIA += "\n";
+    }
 
-  localStorage.removeItem("experienciaUsuario");
-  localStorage.removeItem("objetivoProjeto");
-}
+    mensagemParaIA += "\nResponda de forma clara, detalhada e organizada, como um guia passo a passo para o projeto.";
+    mensagemParaIA += " Use parágrafos e listas numeradas para facilitar a leitura, mas não insira tags HTML, só texto puro.";
+    mensagemParaIA += " Seja direto, indicando exatamente o que deve ser feito e como.";
+
+    const messagesDiv = document.getElementById("messages");
+
+    // Cria e mostra o indicador "Quantika está pensando..."
+    const thinkingDiv = document.createElement("div");
+    thinkingDiv.className = "bot";
+    thinkingDiv.id = "typingIndicator";
+    thinkingDiv.textContent = "Quantika está pensando...";
+    messagesDiv.appendChild(thinkingDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+    fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + apiKey,
+        "HTTP-Referer": "http://localhost/Devs_Choice/Projeto/index.html",
+        "X-Title": "Dev's Choice",
+      },
+      body: JSON.stringify({
+        model: "openai/gpt-3.5-turbo",
+        messages: [{ role: "user", content: mensagemParaIA }],
+      }),
+    })
+    .then(res => res.json())
+    .then(dados => {
+      const respostaIA = dados.choices[0].message.content;
+
+      // Remove o indicador "Quantika está pensando..."
+      thinkingDiv.remove();
+
+      // Mostra a resposta da Quantika com animação gradual
+      addMessageGradualmente("Quantika: " + respostaIA, "bot");
+
+      localStorage.removeItem('respostas_' + nomeUsuario); // Remove para não repetir
+    })
+    .catch(err => {
+      thinkingDiv.remove();
+      addMessage("Erro ao conectar com a IA.", "bot");
+      console.error(err);
+    });
+  }
+});
+
+localStorage.removeItem("experienciaUsuario");
+localStorage.removeItem("objetivoProjeto");
 
 history.pushState(null, null, location.href);
 window.onpopstate = function () {
   history.go(1);
   alert("Não é possível voltar para a página anterior. Faça login novamente.");
 };
+
 
   async function sendMessage() {
     const input = document.getElementById("user-input");
