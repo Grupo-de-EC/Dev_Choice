@@ -1,11 +1,5 @@
-
-  
 function editarQuestionario() {
     alert("Função para editar questionários ainda será implementada.");
-}
-
-function atualizarIA() {
-    alert("A IA foi atualizada com sucesso!");
 }
   
 function editarPerfil() {
