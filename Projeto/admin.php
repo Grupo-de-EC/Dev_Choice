@@ -36,10 +36,6 @@ $graficoJS = json_encode(array_values($graficoData));
     <div class="nav-container">
       <a href="#" class="nav-brand">Painel do Admin</a>
       <ul class="nav-links">
-        <li><a href="#questionarios">Questionários</a></li>
-        <li><a href="#feedbacks">Feedbacks</a></li>
-        <li><a href="#grafico">Gráfico</a></li>
-        <li><a href="#perfil">Perfil</a></li>
         <li><a href="login.html">Sair</a></li>
       </ul>
     </div>
