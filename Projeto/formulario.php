@@ -1,7 +1,6 @@
 <?php
 require_once 'conexao.php';
 
-// Mapeamento dos IDs das opções da pergunta 2 para os nomes dos kits
 $mapa_opcoes_pergunta2 = [
     1 => 'web',
     2 => 'mobile',
@@ -47,46 +46,39 @@ $conn->close();
   <div class="form-container">
     <h2>Responda o formulário abaixo</h2>
     <form id="devForm">
-      <?php foreach ($perguntas as $pid => $pergunta): ?>
-        <fieldset>
-          <legend><?= htmlspecialchars($pergunta['texto']) ?></legend>
+    <?php foreach ($perguntas as $pid => $pergunta): ?>
+      <fieldset>
+        <legend><?= htmlspecialchars($pergunta['texto']) ?></legend>
 
-          <?php if ($pergunta['tipo'] === 'texto'): ?>
-            <input type="text" name="resposta[<?= $pid ?>]" required>
+        <?php if ($pergunta['tipo'] === 'texto'): ?>
+          <input type="text" name="resposta[<?= $pid ?>]" required>
 
-          <?php elseif ($pergunta['tipo'] === 'unica_escolha'): ?>
-            <div class="options-container">
-              <?php foreach ($pergunta['opcoes'] as $oid => $opcao): ?>
-                <?php
-                  // Para a pergunta 2, usar o nome do kit como nome do campo
-                  if ($pid == 2 && isset($mapa_opcoes_pergunta2[$oid])) {
-                      $inputName = $mapa_opcoes_pergunta2[$oid];
-                  } else {
-                      $inputName = $pid;
-                  }
-                ?>
-                <label class="option-label">
-                  <input type="radio" name="resposta[<?= $inputName ?>]" value="<?= htmlspecialchars($opcao) ?>" required>
-                  <?= htmlspecialchars($opcao) ?>
-                </label>
-              <?php endforeach; ?>
-            </div>
+        <?php elseif ($pergunta['tipo'] === 'unica_escolha'): ?>
+          <div class="options-container">
+            <?php foreach ($pergunta['opcoes'] as $oid => $opcao): ?>
+              <label class="option-label">
+                <!-- Para pergunta 2, nome igual para todas as opções -->
+                <input type="radio" name="resposta[<?= $pid ?>]" value="<?= htmlspecialchars($opcao) ?>" required>
+                <?= htmlspecialchars($opcao) ?>
+              </label>
+            <?php endforeach; ?>
+          </div>
 
-          <?php elseif ($pergunta['tipo'] === 'multipla_escolha'): ?>
-            <div class="options-container">
-              <?php foreach ($pergunta['opcoes'] as $oid => $opcao): ?>
-                <label class="option-label">
-                  <input type="checkbox" name="resposta[<?= $pid ?>][]" value="<?= htmlspecialchars($opcao) ?>">
-                  <?= htmlspecialchars($opcao) ?>
-                </label>
-              <?php endforeach; ?>
-            </div>
+        <?php elseif ($pergunta['tipo'] === 'multipla_escolha'): ?>
+          <div class="options-container">
+            <?php foreach ($pergunta['opcoes'] as $oid => $opcao): ?>
+              <label class="option-label">
+                <input type="checkbox" name="resposta[<?= $pid ?>][]" value="<?= htmlspecialchars($opcao) ?>">
+                <?= htmlspecialchars($opcao) ?>
+              </label>
+            <?php endforeach; ?>
+          </div>
 
-          <?php else: ?>
-            <p>Tipo de pergunta não suportado.</p>
-          <?php endif; ?>
-        </fieldset>
-      <?php endforeach; ?>
+        <?php else: ?>
+          <p>Tipo de pergunta não suportado.</p>
+        <?php endif; ?>
+      </fieldset>
+    <?php endforeach; ?>
       <button type="submit">Enviar</button>
     </form>
   </div>
@@ -141,12 +133,25 @@ $conn->close();
 
       respostas[nomeCampo] = respostaPergunta;
     }
-
     const nomeUsuario = localStorage.getItem('nomeUsuario') || 'Anônimo';
     localStorage.setItem('respostas_' + nomeUsuario, JSON.stringify(respostas));
 
-    alert('Respostas salvas localmente!');
-    window.location.href = 'index.php';
+    const mapaPergunta2 = {
+      'Site ou sistema web': 'web',
+      'Aplicativo mobile': 'mobile',
+      'Programa para desktop': 'desktop',
+      'Projeto com hardware / IoT': 'iot',
+      'Jogo digital': 'jogo',
+      'Análise de dados / IA': 'analise',
+      'Outros': 'outros'
+    };
+''
+    const respostaPergunta2 = respostas['2'];
+    if (respostaPergunta2 && mapaPergunta2[respostaPergunta2]) {
+      localStorage.setItem('tipoProjeto', mapaPergunta2[respostaPergunta2]);
+    }
+    window.location.href = 'index.html';
+
   });
 </script>
 </body>
