@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header("Location: adminLogin.php");
+    exit();
+}
+
 require_once 'conexao.php';
 
 if ($conn->connect_error) {
