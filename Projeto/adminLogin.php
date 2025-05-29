@@ -1,7 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header("Location: adminLogin.php");
+if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
+    // Admin já logado, redireciona para admin.php
+    header("Location: admin.php");
     exit();
 }
 
@@ -14,43 +15,44 @@ if ($conn->connect_error) {
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 
-$query = "SELECT * FROM users WHERE email = ? AND role = 'admin'";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
-$admin = $result->fetch_assoc();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $query = "SELECT * FROM users WHERE email = ? AND role = 'admin'";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $admin = $result->fetch_assoc();
 
-if ($admin) {
-    var_dump($admin); 
-    if ($admin && password_verify($password, $admin['password'])) {
-        $_SESSION['admin_logged_in'] = true;
-        $_SESSION['role'] = 'admin';
-        $_SESSION['name'] = $admin['name'];
-        $_SESSION['email'] = $admin['email'];
+    if ($admin) {
+        if (password_verify($password, $admin['password'])) {
+            $_SESSION['admin_logged_in'] = true;
+            $_SESSION['role'] = 'admin';
+            $_SESSION['name'] = $admin['name'];
+            $_SESSION['email'] = $admin['email'];
 
-        header("Location: admin.php");
-        exit();
+            header("Location: admin.php");
+            exit();
+        } else {
+            echo "Senha incorreta!";
+        }
     } else {
-        echo "Senha incorreta!";
+        ?>
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+            <meta charset="UTF-8">
+            <title>Erro no Login</title>
+            <link rel="stylesheet" href="adminLogin.css"> 
+        </head>
+        <body>
+         <div class="login-container">
+            <h2>Erro no Login</h2>
+            <div class="error-message">Usuário não encontrado!</div>
+            <a href="adminLogin.php" class="btn-voltar">Voltar ao Login</a>
+         </div>
+        </body>
+        </html>
+        <?php
     }
-} else {
-    ?>
-    <!DOCTYPE html>
-    <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <title>Erro no Login</title>
-        <link rel="stylesheet" href="adminLogin.css"> 
-    </head>
-    <body>
-     <div class="login-container">
-        <h2>Erro no Login</h2>
-        <div class="error-message">Usuário não encontrado!</div>
-        <a href="adminLogin.php" class="btn-voltar">Voltar ao Login</a>
-     </div>
-    </body>
-    </html>
-    <?php
 }
-
+?>
