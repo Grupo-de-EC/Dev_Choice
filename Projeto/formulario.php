@@ -150,6 +150,12 @@ $conn->close();
     if (respostaPergunta2 && mapaPergunta2[respostaPergunta2]) {
       localStorage.setItem('tipoProjeto', mapaPergunta2[respostaPergunta2]);
     }
+
+    const respostaProjetoTexto = respostas['1']; // ou o ID certo da pergunta do projeto
+    if (respostaProjetoTexto) {
+      localStorage.setItem('nomeProjeto', respostaProjetoTexto);
+}
+
     window.location.href = 'index.html';
 
   });
