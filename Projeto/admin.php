@@ -38,7 +38,6 @@ $graficoJS = json_encode(array_values($graficoData));
       <ul class="nav-links">
         <li><a href="#questionarios">Questionários</a></li>
         <li><a href="#feedbacks">Feedbacks</a></li>
-        <li><a href="#atualizacao">Atualizar IA</a></li>
         <li><a href="#grafico">Gráfico</a></li>
         <li><a href="#perfil">Perfil</a></li>
         <li><a href="login.html">Sair</a></li>
@@ -80,11 +79,6 @@ $graficoJS = json_encode(array_values($graficoData));
           }
         ?>
       </ul>
-    </section>
-
-    <section id="atualizacao">
-      <h2>Atualização da IA</h2>
-      <button onclick="atualizarIA()">Executar Atualização</button>
     </section>
 
     <section id="grafico">
