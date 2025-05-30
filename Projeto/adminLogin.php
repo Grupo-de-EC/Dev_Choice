@@ -1,7 +1,6 @@
 <?php
 session_start();
 if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
-    // Admin já logado, redireciona para admin.php
     header("Location: admin.php");
     exit();
 }
@@ -48,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          <div class="login-container">
             <h2>Erro no Login</h2>
             <div class="error-message">Usuário não encontrado!</div>
-            <a href="adminLogin.php" class="btn-voltar">Voltar ao Login</a>
+            <a href="adminLogin.html" class="btn-voltar">Voltar ao Login</a>
          </div>
         </body>
         </html>
