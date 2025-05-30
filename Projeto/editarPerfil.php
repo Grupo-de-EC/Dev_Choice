@@ -67,7 +67,7 @@ $emailAtual = $_SESSION['email'];
 <script>
     setTimeout(() => {
         window.location.href = "admin.php";
-    }, 3000); // 3 segundos
+    }, 3000);
 </script>
 <?php endif; ?>
 
