@@ -36,7 +36,7 @@ $graficoJS = json_encode(array_values($graficoData));
     <div class="nav-container">
       <a href="#" class="nav-brand">Painel do Admin</a>
       <ul class="nav-links">
-        <li><a href="login.html">Sair</a></li>
+        <li><a href="logout.php" id="logoutButton" class="btn-logout">Sair</a></li>
       </ul>
     </div>
   </nav>
