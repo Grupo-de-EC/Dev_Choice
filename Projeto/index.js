@@ -299,47 +299,47 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const kits = {
     web: [
-      { nome: 'HTML', link: 'https://developer.mozilla.org/pt-BR/docs/Web/HTML', icone: '/Devs_Choice/imagens/html.png' },
-      { nome: 'CSS', link: 'https://developer.mozilla.org/pt-BR/docs/Web/CSS', icone: '/Devs_Choice/imagens/css.png' },
-      { nome: 'JavaScript', link: 'https://developer.mozilla.org/pt-BR/docs/Web/JavaScript', icone: '/Devs_Choice/imagens/js.png' },
-      { nome: 'React', link: 'https://reactjs.org/', icone: '/Devs_Choice/imagens/react.png' },
-      { nome: 'Node.js', link: 'https://nodejs.org/en/', icone: '/Devs_Choice/imagens/node.png' }
+      { nome: 'HTML', link: 'https://developer.mozilla.org/pt-BR/docs/Web/HTML', icone: '/Devs_Choice/Imagens/html.png' },
+      { nome: 'CSS', link: 'https://developer.mozilla.org/pt-BR/docs/Web/CSS', icone: '/Devs_Choice/Imagens/css.png' },
+      { nome: 'JavaScript', link: 'https://developer.mozilla.org/pt-BR/docs/Web/JavaScript', icone: '/Devs_Choice/Imagens/js.png' },
+      { nome: 'React', link: 'https://reactjs.org/', icone: '/Devs_Choice/Imagens/react.png' },
+      { nome: 'Node.js', link: 'https://nodejs.org/en/', icone: '/Devs_Choice/Imagens/node.png' }
     ],
     mobile: [
-      { nome: 'React Native', link: 'https://reactnative.dev/', icone: '/Devs_Choice/imagens/react.png' },
-      { nome: 'Flutter', link: 'https://flutter.dev/', icone: '/Devs_Choice/imagens/flutter.png' },
-      { nome: 'Swift', link: 'https://developer.apple.com/swift/', icone: '/Devs_Choice/imagens/swift.png' },
-      { nome: 'Kotlin', link: 'https://kotlinlang.org/', icone: '/Devs_Choice/imagens/kotlin.png' }
+      { nome: 'React Native', link: 'https://reactnative.dev/', icone: '/Devs_Choice/Imagens/react.png' },
+      { nome: 'Flutter', link: 'https://flutter.dev/', icone: '/Devs_Choice/Imagens/flutter.png' },
+      { nome: 'Swift', link: 'https://developer.apple.com/swift/', icone: '/Devs_Choice/Imagens/swift.png' },
+      { nome: 'Kotlin', link: 'https://kotlinlang.org/', icone: '/Devs_Choice/Imagens/kotlin.png' }
     ],
     desktop: [
-      { nome: 'Electron', link: 'https://www.electronjs.org/', icone: '/Devs_Choice/imagens/electron.png' },
-      { nome: 'C#', link: 'https://learn.microsoft.com/dotnet/csharp/', icone: '/Devs_Choice/imagens/csharp.png' },
-      { nome: 'JavaFX', link: 'https://openjfx.io/', icone: '/Devs_Choice/imagens/java.png' },
-      { nome: 'Python Tkinter', link: 'https://docs.python.org/3/library/tkinter.html', icone: '/Devs_Choice/imagens/python.png' }
+      { nome: 'Electron', link: 'https://www.electronjs.org/', icone: '/Devs_Choice/Imagens/electron.png' },
+      { nome: 'C#', link: 'https://learn.microsoft.com/dotnet/csharp/', icone: '/Devs_Choice/Imagens/csharp.png' },
+      { nome: 'JavaFX', link: 'https://openjfx.io/', icone: '/Devs_Choice/Imagens/java.png' },
+      { nome: 'Python Tkinter', link: 'https://docs.python.org/3/library/tkinter.html', icone: '/Devs_Choice/Imagens/python.png' }
     ],
     iot: [
-      { nome: 'ArduinoIDE(ESP32)', link: 'https://www.espressif.com/en/products/socs/esp32', icone: '/Devs_Choice/imagens/arduino.png' },
-      { nome: 'ArduinoIDE', link: 'https://www.arduino.cc/', icone: '/Devs_Choice/imagens/arduino.png' },
-      { nome: 'Raspberry Pi', link: 'https://www.raspberrypi.org/', icone: '/Devs_Choice/imagens/raspberrypi.png' },
-      { nome: 'MQTT', link: 'https://mqtt.org/', icone: '/Devs_Choice/imagens/mqtt.png' }
+      { nome: 'ArduinoIDE(ESP32)', link: 'https://www.espressif.com/en/products/socs/esp32', icone: '/Devs_Choice/Imagens/arduino.png' },
+      { nome: 'ArduinoIDE', link: 'https://www.arduino.cc/', icone: '/Devs_Choice/Imagens/arduino.png' },
+      { nome: 'Raspberry Pi', link: 'https://www.raspberrypi.org/', icone: '/Devs_Choice/Imagens/raspberrypi.png' },
+      { nome: 'MQTT', link: 'https://mqtt.org/', icone: '/Devs_Choice/Imagens/mqtt.png' }
     ],
     jogo: [
-      { nome: 'Unity', link: 'https://unity.com/', icone: '/Devs_Choice/imagens/unity.png' },
-      { nome: 'Unreal Engine', link: 'https://www.unrealengine.com/', icone: '/Devs_Choice/imagens/unreal.png' },
-      { nome: 'Godot', link: 'https://godotengine.org/', icone: '/Devs_Choice/imagens/godot.png' },
-      { nome: 'Blender', link: 'https://www.blender.org/', icone: '/Devs_Choice/imagens/blender.png' }
+      { nome: 'Unity', link: 'https://unity.com/', icone: '/Devs_Choice/Imagens/unity.png' },
+      { nome: 'Unreal Engine', link: 'https://www.unrealengine.com/', icone: '/Devs_Choice/Imagens/unreal.png' },
+      { nome: 'Godot', link: 'https://godotengine.org/', icone: '/Devs_Choice/Imagens/godot.png' },
+      { nome: 'Blender', link: 'https://www.blender.org/', icone: '/Devs_Choice/Imagens/blender.png' }
     ],
     analise: [
-      { nome: 'Python', link: 'https://www.python.org/', icone: '/Devs_Choice/imagens/python.png' },
-      { nome: 'Pandas', link: 'https://pandas.pydata.org/', icone: '/Devs_Choice/imagens/pandas.png' },
-      { nome: 'Jupyter', link: 'https://jupyter.org/', icone: '/Devs_Choice/imagens/jupyter.png' },
-      { nome: 'TensorFlow', link: 'https://www.tensorflow.org/', icone: '/Devs_Choice/imagens/tensorflow.png' } 
+      { nome: 'Python', link: 'https://www.python.org/', icone: '/Devs_Choice/Imagens/python.png' },
+      { nome: 'Pandas', link: 'https://pandas.pydata.org/', icone: '/Devs_Choice/Imagens/pandas.png' },
+      { nome: 'Jupyter', link: 'https://jupyter.org/', icone: '/Devs_Choice/Imagens/jupyter.png' },
+      { nome: 'TensorFlow', link: 'https://www.tensorflow.org/', icone: '/Devs_Choice/Imagens/tensorflow.png' } 
     ],
     outros: [
-      { nome: 'Git', link: 'https://git-scm.com/', icone: '/Devs_Choice/imagens/git.png' },
-      { nome: 'Docker', link: 'https://www.docker.com/', icone: '/Devs_Choice/imagens/docker.png' },
+      { nome: 'Git', link: 'https://git-scm.com/', icone: '/Devs_Choice/Imagens/git.png' },
+      { nome: 'Docker', link: 'https://www.docker.com/', icone: '/Devs_Choice/Imagens/docker.png' },
       { nome: 'APIs', link: 'https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Client-side_web_APIs/Introduction', icone: '/Devs_Choice/imagens/apis.png' },
-      { nome: 'GitHub', link: 'https://github.com/', icone: '/Devs_Choice/imagens/github.png' }
+      { nome: 'GitHub', link: 'https://github.com/', icone: '/Devs_Choice/Imagens/github.png' }
     ]
   };
 
