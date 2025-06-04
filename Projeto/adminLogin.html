@@ -3,26 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Administrador</title>
+    <title>Login de Moderador</title>
     <link rel="stylesheet" href="adminLogin.css" />
   </head>
   <body>
 <a href="login.html" class="btn-voltar">← Voltar</a>
-    <div class="login-container">
-      <h2>Login de Administrador</h2>
-      <form action="adminLogin.php" method="POST">
-        <div class="input-group">
-          <label for="email">Email:</label>
-          <input type="text" id="email" name="email" required />
-        </div>
-        <div class="input-group">
-          <label for="password">Senha:</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-        <div class="input-group">
-          <button type="submit">Entrar</button>
-        </div>
-      </form>      
+<div class="login-container">
+  <h2>Dev's Choice</h2>
+  <form action="adminLogin.php" method="POST">
+    <div class="input-group">
+      <input type="text" id="email" name="email" placeholder="Email" required />
     </div>
-  </body>
-</html>
+    <div class="input-group">
+      <input type="password" id="password" name="password" placeholder="Senha" required />
+    </div>
+    <div class="input-group">
+      <button type="submit">Entrar</button>
+    </div>
+  </form>      
+</div>
+
